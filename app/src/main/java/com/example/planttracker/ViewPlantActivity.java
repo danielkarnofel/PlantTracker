@@ -4,15 +4,15 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.planttracker.databinding.ActivityMainBinding;
+import com.example.planttracker.databinding.ActivityViewPlantBinding;
 
-public class MainActivity extends AppCompatActivity {
-    private ActivityMainBinding binding;
+public class ViewPlantActivity extends AppCompatActivity {
+    private ActivityViewPlantBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityViewPlantBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
     }
 }

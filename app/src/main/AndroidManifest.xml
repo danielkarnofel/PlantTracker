@@ -10,8 +10,28 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.PlantTracker"
-        tools:targetApi="31">
+        android:theme="@style/Theme.PlantTracker">
+        <activity
+            android:name=".ViewAreaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ViewPlantActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AreasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditAreaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditPlantActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
