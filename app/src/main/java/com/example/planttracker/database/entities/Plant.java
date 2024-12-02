@@ -10,4 +10,10 @@ public class Plant {
     private LightLevel lightLevelNeeded;
     private int wateringFrequency;
     private LocalDateTime lastWatered;
+
+    // TODO: Constructor
+
+    // TODO: toString, equals, hashCode
+
+    // TODO: Getters and Setters
 }

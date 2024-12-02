@@ -6,4 +6,10 @@ public class Area {
     private String name;
     private int plantCount;
     private LightLevel lightLevel;
+
+    // TODO: Constructor
+
+    // TODO: toString, equals, hashCode
+
+    // TODO: Getters and Setters
 }
