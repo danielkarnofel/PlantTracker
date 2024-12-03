@@ -5,49 +5,49 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AreasActivity">
+    tools:context=".PlantsActivity">
 
     <TextView
-        android:id="@+id/areaRecyclerViewLabel"
+        android:id="@+id/plantRecyclerViewLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="32dp"
         android:padding="8dp"
-        android:text="My Areas"
-        app:layout_constraintBottom_toTopOf="@id/areaRecyclerView"
+        android:text="My Plants"
+        app:layout_constraintBottom_toTopOf="@id/plantRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:textSize="24sp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/areaRecyclerView"
+        android:id="@+id/plantRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="300dp"
         android:layout_margin="32dp"
         android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/areaRecyclerViewLabel" />
+        app:layout_constraintTop_toBottomOf="@id/plantRecyclerViewLabel" />
 
     <Button
-        android:id="@+id/addNewAreaButton"
+        android:id="@+id/addNewPlantButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="32dp"
         android:padding="8dp"
-        android:text="Add New Area"
+        android:text="Add New Plant"
         android:textSize="24sp"
-        app:layout_constraintTop_toBottomOf="@id/areaRecyclerView" />
+        app:layout_constraintTop_toBottomOf="@id/plantRecyclerView" />
 
     <Button
-        android:id="@+id/viewPlantsButton"
+        android:id="@+id/viewAreasButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="32dp"
         android:padding="8dp"
         android:text="Home"
         android:textSize="24sp"
-        app:layout_constraintTop_toBottomOf="@id/addNewAreaButton" />
+        app:layout_constraintTop_toBottomOf="@id/addNewPlantButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
