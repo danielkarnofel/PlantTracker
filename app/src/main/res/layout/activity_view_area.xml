@@ -7,4 +7,114 @@
     android:layout_height="match_parent"
     tools:context=".ViewAreaActivity">
 
+    <TextView
+        android:id="@+id/viewAreaNameLabel"
+        style="@style/small_text_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/large_space"
+        android:text="@string/name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/viewAreaNameTextView"
+        style="@style/large_text_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap"
+        android:text="@string/no_data"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewAreaNameLabel" />
+
+    <TextView
+        android:id="@+id/viewAreaLightLevelLabel"
+        style="@style/small_text_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/large_gap"
+        android:text="@string/light_level"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewAreaNameTextView" />
+
+    <!--TODO: Replace with drawable to display light level-->
+    <RadioGroup
+        android:id="@+id/lightLevelRadioGroup"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewAreaLightLevelLabel">
+
+        <RadioButton
+            android:id="@+id/veryLowRadioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:id="@+id/lowRadioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:id="@+id/mediumRadioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:id="@+id/highRadioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:id="@+id/veryHighRadioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/viewPlantPlantCountLabel"
+        style="@style/small_text_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/large_gap"
+        android:text="@string/number_of_plants"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lightLevelRadioGroup" />
+
+    <TextView
+        android:id="@+id/viewPlantPlantCountTextView"
+        style="@style/large_text_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap"
+        android:text="@string/no_data"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPlantPlantCountLabel" />
+
+    <!--TODO: (Optional) Add a button that launches an Add Plants to Area activity -->
+
+    <Button
+        android:id="@+id/viewAreaEditButton"
+        style="@style/button_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_space"
+        android:text="@string/edit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPlantPlantCountTextView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
