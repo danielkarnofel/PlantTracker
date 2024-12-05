@@ -14,5 +14,13 @@ public class EditAreaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityEditAreaBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // TODO: implement onClick for Save button
+
+        // TODO: implement onClick for Cancel button
+
+        // TODO: implement onClick for Delete button
     }
+
+    // TODO: implement basic intent factory
 }

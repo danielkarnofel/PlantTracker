@@ -14,5 +14,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // TODO: implement onClick for My Plants button
+
+        // TODO: implement onClick for My Areas button
+
+        // TODO: implement onClick for Admin Options button
     }
+
+    // TODO: implement basic intent factory
 }

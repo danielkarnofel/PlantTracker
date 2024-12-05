@@ -33,5 +33,6 @@
     <string name="number_of_plants">Number of Plants:</string>
     <string name="plant_type_label">Plant Type:</string>
     <string name="enter_plant_type">Enter plant type</string>
+    <string name="back">Back</string>
 
 </resources>

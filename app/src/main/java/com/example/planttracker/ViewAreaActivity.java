@@ -14,5 +14,11 @@ public class ViewAreaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityViewAreaBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // TODO: implement onClick for Edit button
+
+        // TODO: implement onClick for Back button
     }
+
+    // TODO: implement basic intent factory
 }
