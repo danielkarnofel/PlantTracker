@@ -4,6 +4,7 @@ import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
+import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
@@ -14,10 +15,10 @@ import com.example.planttracker.database.entities.User;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
+/// *** Implemented code for userDAO. Currently creates a problem with an ignored file. 12/4/2024
 @TypeConverters()
 @Database(entities = {Plant.class, Area.class, User.class}, version = 1, exportSchema = false)
-public abstract class AppDatabase {
+public abstract class AppDatabase extends RoomDatabase {
     public static final String AREA_TABLE = "areaTable";
     public static final String PLANT_TABLE = "plantTable";
     public static final String USER_TABLE = "userTable";
@@ -28,7 +29,22 @@ public abstract class AppDatabase {
 
     static AppDatabase getDatabase(final Context context) {
         // TODO: implement singleton design patten to get instance of the database
+        /// *** Code borrowed from HW4 ***
+        if(INSTANCE == null){
+            synchronized (AppDatabase.class){
+                if (INSTANCE == null){
+                    INSTANCE = Room.databaseBuilder(
+                                    context.getApplicationContext(),
+                                    AppDatabase.class,
+                                    DATABASE_NAME)
+                            .fallbackToDestructiveMigration()
+                            .addCallback(addDefaultValues)
+                            .build();
+                }
+            }
+        }
         return INSTANCE;
+        /// *** End code borrowed from HW4 ***
     }
 
     private static final RoomDatabase.Callback addDefaultValues = new RoomDatabase.Callback() {
@@ -38,9 +54,19 @@ public abstract class AppDatabase {
             // TODO: Add a log here
             databaseWriteExecutor.execute(() -> {
                 // TODO: Add default data here
+                /// *** The start of default data for userDao, code borrowed from HW4. ***
+                UserDAO dao = INSTANCE.userDAO();
+                dao.deleteAll();
+                User admin = new User("admin1", "admin1");
+                admin.setAdmin(true);
+                dao.insert(admin);
+                User testUser1 = new User("testuser1", "testuser1");
+                /// *** The end of default data for userDao, code borrowed from HW4. ***
+
             });
         }
     };
 
     public abstract AppDAO appDAO();
+    public abstract UserDAO userDAO();
 }
