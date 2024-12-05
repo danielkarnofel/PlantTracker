@@ -14,5 +14,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // TODO: implement onClick for Login button
+
+        // TODO: implement onClick for Create Account button
     }
+
+    // TODO: implement basic intent factory
 }

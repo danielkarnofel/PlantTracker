@@ -14,5 +14,11 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // TODO: implement onClick for Sign Up button
+
+        // TODO: implement onClick for Cancel button
     }
+
+    // TODO: implement intent factory
 }

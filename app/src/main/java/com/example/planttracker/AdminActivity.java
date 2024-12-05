@@ -15,5 +15,9 @@ public class AdminActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityAdminBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // TODO: implement onClick for Home button
     }
+
+    // TODO: implement basic intent factory
 }

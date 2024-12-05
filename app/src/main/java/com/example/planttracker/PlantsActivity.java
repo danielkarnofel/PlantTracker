@@ -15,5 +15,11 @@ public class PlantsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityPlantsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // TODO: implement onClick for Add New Plant button
+
+        // TODO: implement onClick for Home Button
     }
+
+    // TODO: implement basic intent factory
 }

@@ -14,5 +14,13 @@ public class ViewPlantActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityViewPlantBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // TODO: implement onClick for Water Plant button
+
+        // TODO: implement onClick for Edit button
+
+        // TODO: implement onClick for Back button
     }
+
+    // TODO: implement basic intent factory
 }
