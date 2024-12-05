@@ -7,4 +7,169 @@
     android:layout_height="match_parent"
     tools:context=".ViewPlantActivity">
 
+    <TextView
+        android:id="@+id/viewPlantNameLabel"
+        style="@style/small_text_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/large_space"
+        android:text="@string/name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/viewPlantNameTextView"
+        style="@style/large_text_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap"
+        android:text="@string/no_data"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPlantNameLabel" />
+
+    <TextView
+        android:id="@+id/viewPlantAreaLabel"
+        style="@style/small_text_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/large_gap"
+        android:text="@string/area"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPlantNameTextView" />
+
+    <TextView
+        android:id="@+id/viewPlantAreaTextView"
+        style="@style/large_text_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap"
+        android:text="@string/no_data"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPlantAreaLabel" />
+
+    <TextView
+        android:id="@+id/viewPlantLightLevelNeededLabel"
+        style="@style/small_text_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/large_gap"
+        android:text="@string/light_level_needed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPlantAreaTextView" />
+
+    <!--TODO: Replace with drawable to display light level needed-->
+    <RadioGroup
+        android:id="@+id/lightLevelNeededRadioGroup"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPlantLightLevelNeededLabel">
+
+        <RadioButton
+            android:id="@+id/veryLowRadioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:id="@+id/lowRadioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:id="@+id/mediumRadioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:id="@+id/highRadioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:id="@+id/veryHighRadioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/viewPlantWateringFrequencyLabel"
+        style="@style/small_text_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/large_gap"
+        android:text="@string/watering_frequency"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lightLevelNeededRadioGroup" />
+
+    <TextView
+        android:id="@+id/viewPlantWateringFrequency"
+        style="@style/large_text_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap"
+        android:text="@string/no_data"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPlantWateringFrequencyLabel" />
+
+    <TextView
+        android:id="@+id/viewPlantLastWateredLabel"
+        style="@style/small_text_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/large_gap"
+        android:text="@string/last_watered"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPlantWateringFrequency" />
+
+    <TextView
+        android:id="@+id/viewPlantLastWatered"
+        style="@style/large_text_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap"
+        android:text="@string/no_data"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPlantLastWateredLabel" />
+
+    <Button
+        android:id="@+id/viewPlantWaterButton"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        style="@style/water_button_style"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPlantLastWatered"
+        android:layout_marginTop="@dimen/small_space"
+        android:text="@string/water_plant"
+        />
+
+    <Button
+        android:id="@+id/viewPlantEditButton"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        style="@style/button_style"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPlantWaterButton"
+        android:layout_marginTop="@dimen/small_gap"
+        android:text="@string/edit"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

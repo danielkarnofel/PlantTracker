@@ -9,46 +9,48 @@
 
     <TextView
         android:id="@+id/appTitle"
+        style="@style/title_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="32dp"
-        android:gravity="center"
-        android:padding="8dp"
-        android:text="PlantTracker"
-        android:textSize="48sp"
+        android:layout_marginTop="@dimen/large_space"
+        android:text="@string/app_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/viewPlantsButton"
-        android:layout_width="match_parent"
+        style="@style/button_style"
+        android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
-        android:layout_margin="32dp"
-        android:padding="8dp"
-        android:text="View All Plants"
-        android:textSize="24sp"
+        android:layout_marginTop="@dimen/large_space"
+        android:text="@string/my_plants"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appTitle" />
 
     <Button
         android:id="@+id/viewAreasButton"
-        android:layout_width="match_parent"
+        style="@style/button_style"
+        android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
-        android:layout_margin="32dp"
-        android:padding="8dp"
-        android:text="View My Areas"
-        android:textSize="24sp"
+        android:layout_marginTop="@dimen/large_gap"
+        android:text="@string/my_areas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/viewPlantsButton" />
 
     <Button
         android:id="@+id/adminButton"
-        android:layout_width="match_parent"
+        style="@style/button_style"
+        android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
-        android:layout_margin="32dp"
-        android:padding="8dp"
-        android:text="Admin Options"
-        android:textSize="24sp"
+        android:layout_marginTop="@dimen/large_gap"
+        android:text="@string/admin_options"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/viewAreasButton" />
+    <!-- TODO: change default visibility to gone, should be set programmatically -->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

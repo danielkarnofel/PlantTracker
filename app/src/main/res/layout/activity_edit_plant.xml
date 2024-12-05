@@ -7,4 +7,163 @@
     android:layout_height="match_parent"
     tools:context=".EditPlantActivity">
 
+    <TextView
+        android:id="@+id/editPlantNameLabel"
+        style="@style/small_text_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/large_space"
+        android:text="@string/name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editPlantNameEditText"
+        style="@style/text_field_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap"
+        android:hint="@string/enter_plant_name"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editPlantNameLabel"
+        tools:ignore="Autofill" />
+
+    <TextView
+        android:id="@+id/editPlantTypeLabel"
+        style="@style/small_text_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/large_gap"
+        android:text="@string/plant_type_label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editPlantNameEditText" />
+
+    <!--TODO: Implement plant type dropdown menu properly-->
+    <EditText
+        android:id="@+id/editPlantTypeEditText"
+        style="@style/text_field_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap"
+        android:hint="@string/enter_plant_type"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editPlantTypeLabel"
+        tools:ignore="Autofill" />
+
+    <TextView
+        android:id="@+id/lightLevelNeededRadioGroupLabel"
+        style="@style/small_text_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/large_gap"
+        android:text="@string/light_level_needed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editPlantTypeEditText" />
+
+    <RadioGroup
+        android:id="@+id/lightLevelNeededRadioGroup"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lightLevelNeededRadioGroupLabel">
+
+        <RadioButton
+            android:id="@+id/veryLowRadioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:id="@+id/lowRadioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:id="@+id/mediumRadioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:id="@+id/highRadioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <RadioButton
+            android:id="@+id/veryHighRadioButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/editPlantAreaLabel"
+        style="@style/small_text_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/large_gap"
+        android:text="@string/light_level_needed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lightLevelNeededRadioGroup" />
+
+    <!--TODO: Implement area selection dropdown menu properly-->
+    <EditText
+        android:id="@+id/editPlantAreaEditText"
+        style="@style/text_field_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/large_gap"
+        android:hint="Select area"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editPlantAreaLabel"
+        tools:ignore="Autofill" />
+
+    <Button
+        android:id="@+id/editAreaSaveButton"
+        style="@style/button_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_space"
+        android:text="@string/save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editPlantAreaEditText" />
+
+    <Button
+        android:id="@+id/editAreaCancelButton"
+        style="@style/button_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap"
+        android:text="@string/cancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editAreaSaveButton" />
+
+    <Button
+        android:id="@+id/editAreaDeleteButton"
+        style="@style/danger_button_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap"
+        android:text="@string/delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editAreaCancelButton" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

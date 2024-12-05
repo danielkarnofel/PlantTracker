@@ -1,3 +1,37 @@
 <resources>
     <string name="app_name">PlantTracker</string>
+    <string name="my_areas_title">My Areas</string>
+    <string name="enter_username">Enter username</string>
+    <string name="enter_password">Enter password</string>
+    <string name="login">Login</string>
+    <string name="create_account">Create Account</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="cancel">Cancel</string>
+    <string name="my_plants">My Plants</string>
+    <string name="add_new_plant">Add New Plant</string>
+    <string name="home">Home</string>
+    <string name="my_areas">My Areas</string>
+    <string name="add_new_area">Add New Area</string>
+    <string name="admin_options">Admin Options</string>
+    <string name="enter_area_name">Enter area name</string>
+    <string name="light_level">Light Level:</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="light_level_needed">Light Level Needed:</string>
+    <string name="plant_type">Plant Type</string>
+    <string name="enter_plant_name">Enter plant name</string>
+    <string name="edit">Edit</string>
+    <string name="water_plant">Water Plant</string>
+    <string name="no_data">No data</string>
+    <string name="watering_frequency">Watering Frequency:</string>
+    <string name="last_watered">Last Watered:</string>
+    <string name="name">Name:</string>
+    <string name="area">Area:</string>
+    <string name="number_of_plants">Number of Plants:</string>
+    <string name="plant_type_label">Plant Type:</string>
+    <string name="enter_plant_type">Enter plant type</string>
+
 </resources>
