@@ -83,7 +83,7 @@
     </RadioGroup>
 
     <TextView
-        android:id="@+id/viewPlantPlantCountLabel"
+        android:id="@+id/viewAreaPlantCountLabel"
         style="@style/small_text_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
         app:layout_constraintTop_toBottomOf="@id/lightLevelRadioGroup" />
 
     <TextView
-        android:id="@+id/viewPlantPlantCountTextView"
+        android:id="@+id/viewAreaPlantCountTextView"
         style="@style/large_text_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
@@ -102,7 +102,7 @@
         android:text="@string/no_data"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPlantPlantCountLabel" />
+        app:layout_constraintTop_toBottomOf="@id/viewAreaPlantCountLabel" />
 
     <!--TODO: (Optional) Add a button that launches an Add Plants to Area activity -->
 
@@ -115,6 +115,17 @@
         android:text="@string/edit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPlantPlantCountTextView" />
+        app:layout_constraintTop_toBottomOf="@id/viewAreaPlantCountTextView" />
+
+    <Button
+        android:id="@+id/viewAreaBackButton"
+        style="@style/button_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap"
+        android:text="@string/back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewAreaEditButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

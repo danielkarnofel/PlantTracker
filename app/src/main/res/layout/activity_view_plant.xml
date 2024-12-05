@@ -150,26 +150,35 @@
 
     <Button
         android:id="@+id/viewPlantWaterButton"
+        style="@style/water_button_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
-        style="@style/water_button_style"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPlantLastWatered"
         android:layout_marginTop="@dimen/small_space"
         android:text="@string/water_plant"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPlantLastWatered" />
 
     <Button
         android:id="@+id/viewPlantEditButton"
+        style="@style/button_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
-        style="@style/button_style"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPlantWaterButton"
         android:layout_marginTop="@dimen/small_gap"
         android:text="@string/edit"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPlantWaterButton" />
+
+    <Button
+        android:id="@+id/viewPlantBackButton"
+        style="@style/button_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap"
+        android:text="@string/back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPlantEditButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
