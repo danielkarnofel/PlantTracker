@@ -22,6 +22,16 @@ public enum LightLevel {
         return this.level;
     }
 
+    // TODO: is there a more efficient way to do this?
+    public static LightLevel getLevelFromInt(int n) {
+        for (LightLevel level : LightLevel.values()) {
+            if (level.getLevelAsInt() == n) {
+                return level;
+            }
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
         return this.representation;

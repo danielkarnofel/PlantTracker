@@ -12,11 +12,13 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.example.planttracker.database.entities.Area;
 import com.example.planttracker.database.entities.Plant;
 import com.example.planttracker.database.entities.User;
+import com.example.planttracker.database.typeConverters.LightLevelTypeConverter;
+import com.example.planttracker.database.typeConverters.LocalDateTimeTypeConverter;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 /// *** Implemented code for userDAO. Currently creates a problem with an ignored file. 12/4/2024
-@TypeConverters()
+@TypeConverters({LightLevelTypeConverter.class, LocalDateTimeTypeConverter.class})
 @Database(entities = {Plant.class, Area.class, User.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
     public static final String AREA_TABLE = "areaTable";
