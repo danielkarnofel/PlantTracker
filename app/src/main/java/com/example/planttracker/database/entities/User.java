@@ -15,14 +15,11 @@ public class User {
     private String password;
     private boolean isAdmin;
 
-    // TODO: Constructor
     public User (String username, String password){
         this.username = username;
         this.password = password;
         isAdmin = false;
     }
-
-    // TODO: toString, equals, hashCode
 
     @Override
     public boolean equals(Object o) {
@@ -46,7 +43,6 @@ public class User {
                 ", isAdmin=" + isAdmin +
                 '}';
     }
-    // TODO: Getters and Setters
 
     public int getUserID() {
         return userID;
