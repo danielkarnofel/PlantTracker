@@ -3,6 +3,7 @@ package com.example.planttracker.database;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 import com.example.planttracker.database.entities.Plant;
@@ -10,7 +11,7 @@ import com.example.planttracker.database.entities.Plant;
 @Dao
 public interface PlantDAO {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Plant... plant);
 
     @Delete
