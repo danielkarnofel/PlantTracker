@@ -71,6 +71,8 @@
         android:id="@+id/lightLevelNeededRadioGroup"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap"
+        android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,33 +80,23 @@
 
         <RadioButton
             android:id="@+id/veryLowRadioButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            style="@style/light_level_radio_style" />
 
         <RadioButton
             android:id="@+id/lowRadioButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            style="@style/light_level_radio_style" />
 
         <RadioButton
             android:id="@+id/mediumRadioButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            style="@style/light_level_radio_style" />
 
         <RadioButton
             android:id="@+id/highRadioButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            style="@style/light_level_radio_style" />
 
         <RadioButton
             android:id="@+id/veryHighRadioButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            style="@style/light_level_radio_style" />
 
     </RadioGroup>
 
@@ -114,7 +106,7 @@
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/large_gap"
-        android:text="@string/light_level_needed"
+        android:text="@string/area"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/lightLevelNeededRadioGroup" />
