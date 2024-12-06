@@ -17,7 +17,7 @@ import java.util.concurrent.Executors;
 
 @TypeConverters()
 @Database(entities = {Plant.class, Area.class, User.class}, version = 1, exportSchema = false)
-public abstract class AppDatabase {
+public abstract class AppDatabase extends RoomDatabase {
     public static final String AREA_TABLE = "areaTable";
     public static final String PLANT_TABLE = "plantTable";
     public static final String USER_TABLE = "userTable";
@@ -42,5 +42,7 @@ public abstract class AppDatabase {
         }
     };
 
-    public abstract AppDAO appDAO();
+    public abstract AreaDAO areaDAO();
+    public abstract PlantDAO plantDAO();
+    public abstract UserDAO userDAO();
 }
