@@ -17,7 +17,6 @@ import com.example.planttracker.database.typeConverters.LocalDateTimeTypeConvert
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-/// *** Implemented code for userDAO. Currently creates a problem with an ignored file. 12/4/2024
 @TypeConverters({LightLevelTypeConverter.class, LocalDateTimeTypeConverter.class})
 @Database(entities = {Plant.class, Area.class, User.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
@@ -30,7 +29,6 @@ public abstract class AppDatabase extends RoomDatabase {
     static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
     static AppDatabase getDatabase(final Context context) {
-        // TODO: implement singleton design patten to get instance of the database
         /// *** Code borrowed from HW4 ***
         if(INSTANCE == null){
             synchronized (AppDatabase.class){
@@ -55,7 +53,6 @@ public abstract class AppDatabase extends RoomDatabase {
             super.onCreate(db);
             // TODO: Add a log here
             databaseWriteExecutor.execute(() -> {
-                // TODO: Add default data here
                 /// *** The start of default data for userDao, code borrowed from HW4. ***
                 UserDAO dao = INSTANCE.userDAO();
                 dao.deleteAll();
