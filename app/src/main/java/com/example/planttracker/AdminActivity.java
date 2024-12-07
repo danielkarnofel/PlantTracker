@@ -21,7 +21,7 @@ public class AdminActivity extends AppCompatActivity {
     }
 
     // TODO: implement basic intent factory
-    public static Intent AdminActivityIntentFactory(Context applicationContext) {
-        return null;
+    public static Intent adminActivityIntentFactory(Context applicationContext) {
+        return null; // placeholder just to make code compile
     }
 }

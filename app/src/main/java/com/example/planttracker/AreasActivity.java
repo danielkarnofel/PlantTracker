@@ -3,6 +3,7 @@ package com.example.planttracker;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,13 +18,25 @@ public class AreasActivity extends AppCompatActivity {
         binding = ActivityAreasBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // TODO: implement onClick for Add New Area button
+        binding.addNewAreaButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = EditAreaActivity.editAreaActivityIntentFactory(getApplicationContext());
+                startActivity(intent);
+            }
+        });
 
-        // TODO: implement onClick for Home button
+        binding.homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = MainActivity.mainActivityIntentFactory(getApplicationContext());
+                startActivity(intent);
+            }
+        });
     }
 
     // TODO: implement basic intent factory
-    public static Intent AreasActivityIntentFactory(Context applicationContext) {
-        return null;
+    public static Intent areasActivityIntentFactory(Context applicationContext) {
+        return new Intent(applicationContext, AreasActivity.class);
     }
 }

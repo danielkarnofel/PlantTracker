@@ -39,7 +39,7 @@
         app:layout_constraintTop_toBottomOf="@id/plantRecyclerView" />
 
     <Button
-        android:id="@+id/viewAreasButton"
+        android:id="@+id/homeButton"
         style="@style/button_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
