@@ -19,26 +19,26 @@ public class EditAreaActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         // TODO: implement onClick for save button
         // todo is not complete, more work on this button might be needed.
-        binding.editAreaSaveButton.setOnClickListener(new View.OnClickListener() {
+        binding.editAreaActivitySaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Clicking the save button will start the ViewAreaActivity.
-                startActivity(ViewAreaActivity.ViewAreaActivityIntentFactory(getApplicationContext()));
+                startActivity(ViewAreaActivity.viewAreaActivityIntentFactory(getApplicationContext()));
             }
         });
 
         // TODO: implement onClick for Cancel button
         // todo is not complete, more work on this button might be needed.
-        binding.editAreaCancelButton.setOnClickListener(new View.OnClickListener() {
+        binding.editAreaActivityCancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Clicking the cancel button will start the ViewAreaActivity.
-                startActivity(ViewAreaActivity.ViewAreaActivityIntentFactory(getApplicationContext()));
+                startActivity(ViewAreaActivity.viewAreaActivityIntentFactory(getApplicationContext()));
             }
         });
         // TODO: implement onClick for Delete button
         /** Commented out, implemented prior to the implementation of AreasActivityIntentFactory.
-        binding.editAreaDeleteButton.setOnClickListener(new View.OnClickListener() {
+        binding.editAreaActivityDeleteButton.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
         // Clicking the delete button will send user back to AreasActivity.

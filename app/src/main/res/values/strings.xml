@@ -1,38 +1,50 @@
 <resources>
+
+    <!-- Extra Keys -->
+
+
+    <!-- Titles -->
     <string name="app_name">PlantTracker</string>
-    <string name="my_areas_title">My Areas</string>
-    <string name="enter_username">Enter username</string>
-    <string name="enter_password">Enter password</string>
-    <string name="login">Login</string>
-    <string name="create_account">Create Account</string>
-    <string name="username">username</string>
-    <string name="password">password</string>
-    <string name="confirm_password">Confirm password</string>
-    <string name="sign_up">Sign Up</string>
-    <string name="cancel">Cancel</string>
-    <string name="my_plants">My Plants</string>
-    <string name="add_new_plant">Add New Plant</string>
-    <string name="home">Home</string>
-    <string name="my_areas">My Areas</string>
-    <string name="add_new_area">Add New Area</string>
-    <string name="admin_options">Admin Options</string>
-    <string name="enter_area_name">Enter area name</string>
-    <string name="light_level">Light Level:</string>
-    <string name="save">Save</string>
-    <string name="delete">Delete</string>
-    <string name="light_level_needed">Light Level Needed:</string>
-    <string name="plant_type">Plant Type</string>
-    <string name="enter_plant_name">Enter plant name</string>
-    <string name="edit">Edit</string>
-    <string name="water_plant">Water Plant</string>
+    <string name="subtitle_MyAreas">My Areas</string>
+    <string name="subtitle_MyPlants">My Plants</string>
+
+    <!-- EditText hints -->
+    <string name="hint_EnterAreaName">Enter area name</string>
+    <string name="hint_EnterPlantName">Enter plant name</string>
+    <string name="hint_EnterPlantType">Enter plant type</string>
+    <string name="hint_SelectArea">Select area</string>
+    <string name="hint_EnterUsername">Enter username</string>
+    <string name="hint_EnterPassword">Enter password</string>
+    <string name="hint_ConfirmPassword">Confirm password</string>
+
+    <!-- Labels -->
+    <string name="label_Name">Name:</string>
+    <string name="label_LightLevel">Light Level:</string>
+    <string name="label_LightLevelNeeded">Light Level Needed:</string>
+    <string name="label_Area">Area:</string>
+    <string name="label_NumberOfPlants">Number of Plants:</string>
+    <string name="label_WateringFrequency">Watering Frequency:</string>
+    <string name="label_LastWatered">Last Watered:</string>
+    <string name="label_PlantType">Plant Type:</string>
+
+    <!-- Button Titles -->
+    <string name="buttonTitle_Home">Home</string>
+    <string name="buttonTitle_AddNewArea">Add New Area</string>
+    <string name="buttonTitle_Save">Save</string>
+    <string name="buttonTitle_Cancel">Cancel</string>
+    <string name="buttonTitle_Delete">Delete</string>
+    <string name="buttonTitle_Login">Login</string>
+    <string name="buttonTitle_CreateAccount">Create Account</string>
+    <string name="buttonTitle_MyPlants">My Plants</string>
+    <string name="buttonTitle_MyAreas">My Areas</string>
+    <string name="buttonTitle_AdminOptions">Admin Options</string>
+    <string name="buttonTitle_AddNewPlant">Add New Plant</string>
+    <string name="buttonTitle_SignUp">Sign Up</string>
+    <string name="buttonTitle_Edit">Edit</string>
+    <string name="buttonTitle_Back">Back</string>
+    <string name="buttonTitle_WaterPlant">Water Plant</string>
+
+    <!-- Other -->
     <string name="no_data">No data</string>
-    <string name="watering_frequency">Watering Frequency:</string>
-    <string name="last_watered">Last Watered:</string>
-    <string name="name">Name:</string>
-    <string name="area">Area:</string>
-    <string name="number_of_plants">Number of Plants:</string>
-    <string name="plant_type_label">Plant Type:</string>
-    <string name="enter_plant_type">Enter plant type</string>
-    <string name="back">Back</string>
 
 </resources>

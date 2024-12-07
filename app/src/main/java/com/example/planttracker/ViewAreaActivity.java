@@ -17,7 +17,7 @@ public class ViewAreaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityViewAreaBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        binding.viewAreaEditButton.setOnClickListener(new View.OnClickListener() {
+        binding.viewAreaActivityEditButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Clicking the edit button will start the AreaActivity.
@@ -27,7 +27,7 @@ public class ViewAreaActivity extends AppCompatActivity {
 
         // implement onClick for Back button
         /** Commented out, implemented prior to the implementation of AreasActivityIntentFactory.
-        binding.viewAreaBackButton.setOnClickListener(new View.OnClickListener() {
+        binding.viewAreaActivityBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Clicking the back button will send user back to AreasActivity.
@@ -37,7 +37,7 @@ public class ViewAreaActivity extends AppCompatActivity {
         */
     }
     // Basic ViewAreaIntentFactory
-    static Intent ViewAreaActivityIntentFactory(Context context){
+    static Intent viewAreaActivityIntentFactory(Context context){
         return new Intent(context, ViewAreaActivity.class);
     }
 }

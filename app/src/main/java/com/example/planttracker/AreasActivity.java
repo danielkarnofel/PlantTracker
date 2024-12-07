@@ -18,7 +18,7 @@ public class AreasActivity extends AppCompatActivity {
         binding = ActivityAreasBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.addNewAreaButton.setOnClickListener(new View.OnClickListener() {
+        binding.areasActivityAddNewAreaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = EditAreaActivity.editAreaActivityIntentFactory(getApplicationContext());
@@ -26,7 +26,7 @@ public class AreasActivity extends AppCompatActivity {
             }
         });
 
-        binding.homeButton.setOnClickListener(new View.OnClickListener() {
+        binding.areasActivityHomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = MainActivity.mainActivityIntentFactory(getApplicationContext());

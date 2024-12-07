@@ -37,9 +37,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // If the user is an admin, show the Admin Options button
-        binding.adminButton.setVisibility(user.isAdmin() ? View.VISIBLE : View.GONE);
+        binding.mainActivityAdminOptionsButton.setVisibility(user.isAdmin() ? View.VISIBLE : View.GONE);
 
-        binding.viewPlantsButton.setOnClickListener(new View.OnClickListener() {
+        binding.mainActivityMyPlantsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = PlantsActivity.plantsActivityIntentFactory(getApplicationContext());
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        binding.viewAreasButton.setOnClickListener(new View.OnClickListener() {
+        binding.mainActivityMyAreasButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = AreasActivity.areasActivityIntentFactory(getApplicationContext());
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        binding.adminButton.setOnClickListener(new View.OnClickListener() {
+        binding.mainActivityAdminOptionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = AdminActivity.adminActivityIntentFactory(getApplicationContext());

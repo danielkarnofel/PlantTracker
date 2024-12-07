@@ -8,18 +8,18 @@
     tools:context=".ViewPlantActivity">
 
     <TextView
-        android:id="@+id/viewPlantNameLabel"
+        android:id="@+id/viewPlantActivityNameLabel"
         style="@style/small_text_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/large_space"
-        android:text="@string/name"
+        android:text="@string/label_Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/viewPlantNameTextView"
+        android:id="@+id/viewPlantActivityNameTextView"
         style="@style/large_text_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
@@ -27,21 +27,21 @@
         android:text="@string/no_data"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPlantNameLabel" />
+        app:layout_constraintTop_toBottomOf="@id/viewPlantActivityNameLabel" />
 
     <TextView
-        android:id="@+id/viewPlantAreaLabel"
+        android:id="@+id/viewPlantActivityAreaLabel"
         style="@style/small_text_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/large_gap"
-        android:text="@string/area"
+        android:text="@string/label_Area"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPlantNameTextView" />
+        app:layout_constraintTop_toBottomOf="@id/viewPlantActivityNameTextView" />
 
     <TextView
-        android:id="@+id/viewPlantAreaTextView"
+        android:id="@+id/viewPlantActivityAreaTextView"
         style="@style/large_text_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
@@ -49,21 +49,21 @@
         android:text="@string/no_data"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPlantAreaLabel" />
+        app:layout_constraintTop_toBottomOf="@id/viewPlantActivityAreaLabel" />
 
     <TextView
-        android:id="@+id/viewPlantLightLevelNeededLabel"
+        android:id="@+id/viewPlantActivityLightLevelNeededLabel"
         style="@style/small_text_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/large_gap"
-        android:text="@string/light_level_needed"
+        android:text="@string/label_LightLevelNeeded"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPlantAreaTextView" />
+        app:layout_constraintTop_toBottomOf="@id/viewPlantActivityAreaTextView" />
 
     <RadioGroup
-        android:id="@+id/lightLevelNeededRadioGroup"
+        android:id="@+id/viewPlantActivityLightLevelNeededRadioGroup"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_gap"
@@ -71,7 +71,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPlantLightLevelNeededLabel">
+        app:layout_constraintTop_toBottomOf="@id/viewPlantActivityLightLevelNeededLabel">
 
         <RadioButton
             android:id="@+id/veryLowRadioButton"
@@ -96,18 +96,18 @@
     </RadioGroup>
 
     <TextView
-        android:id="@+id/viewPlantWateringFrequencyLabel"
+        android:id="@+id/viewPlantActivityWateringFrequencyLabel"
         style="@style/small_text_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/large_gap"
-        android:text="@string/watering_frequency"
+        android:text="@string/label_WateringFrequency"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lightLevelNeededRadioGroup" />
+        app:layout_constraintTop_toBottomOf="@id/viewPlantActivityLightLevelNeededRadioGroup" />
 
     <TextView
-        android:id="@+id/viewPlantWateringFrequency"
+        android:id="@+id/viewPlantActivityWateringFrequencyTextView"
         style="@style/large_text_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
@@ -115,21 +115,21 @@
         android:text="@string/no_data"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPlantWateringFrequencyLabel" />
+        app:layout_constraintTop_toBottomOf="@id/viewPlantActivityWateringFrequencyLabel" />
 
     <TextView
-        android:id="@+id/viewPlantLastWateredLabel"
+        android:id="@+id/viewPlantActivityLastWateredLabel"
         style="@style/small_text_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/large_gap"
-        android:text="@string/last_watered"
+        android:text="@string/label_LastWatered"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPlantWateringFrequency" />
+        app:layout_constraintTop_toBottomOf="@id/viewPlantActivityWateringFrequencyTextView" />
 
     <TextView
-        android:id="@+id/viewPlantLastWatered"
+        android:id="@+id/viewPlantActivityLastWateredTextView"
         style="@style/large_text_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
@@ -137,39 +137,39 @@
         android:text="@string/no_data"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPlantLastWateredLabel" />
+        app:layout_constraintTop_toBottomOf="@id/viewPlantActivityLastWateredLabel" />
 
     <Button
-        android:id="@+id/viewPlantWaterButton"
+        android:id="@+id/viewPlantActivityWaterPlantButton"
         style="@style/water_button_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_space"
-        android:text="@string/water_plant"
+        android:text="@string/buttonTitle_WaterPlant"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPlantLastWatered" />
+        app:layout_constraintTop_toBottomOf="@id/viewPlantActivityLastWateredTextView" />
 
     <Button
-        android:id="@+id/viewPlantEditButton"
+        android:id="@+id/viewPlantActivityEditButton"
         style="@style/button_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_gap"
-        android:text="@string/edit"
+        android:text="@string/buttonTitle_Edit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPlantWaterButton" />
+        app:layout_constraintTop_toBottomOf="@id/viewPlantActivityWaterPlantButton" />
 
     <Button
-        android:id="@+id/viewPlantBackButton"
+        android:id="@+id/viewPlantActivityBackButton"
         style="@style/button_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_gap"
-        android:text="@string/back"
+        android:text="@string/buttonTitle_Back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPlantEditButton" />
+        app:layout_constraintTop_toBottomOf="@id/viewPlantActivityEditButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,42 +8,42 @@
     tools:context=".EditAreaActivity">
 
     <TextView
-        android:id="@+id/editAreaNameLabel"
+        android:id="@+id/editAreaActivityNameLabel"
         style="@style/small_text_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/large_space"
-        android:text="@string/name"
+        android:text="@string/label_Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editAreaNameEditText"
+        android:id="@+id/editAreaActivityNameEditText"
         style="@style/text_field_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_gap"
-        android:hint="@string/enter_area_name"
+        android:hint="@string/hint_EnterAreaName"
         android:importantForAutofill="no"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editAreaNameLabel" />
+        app:layout_constraintTop_toBottomOf="@id/editAreaActivityNameLabel" />
 
     <TextView
-        android:id="@+id/lightLevelRadioGroupLabel"
+        android:id="@+id/editAreaActivityLightLevelLabel"
         style="@style/small_text_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/large_gap"
-        android:text="@string/light_level"
+        android:text="@string/label_LightLevel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editAreaNameEditText" />
+        app:layout_constraintTop_toBottomOf="@id/editAreaActivityNameEditText" />
 
     <RadioGroup
-        android:id="@+id/lightLevelRadioGroup"
+        android:id="@+id/editAreaActivityLightLevelRadioGroup"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_gap"
@@ -51,7 +51,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lightLevelRadioGroupLabel">
+        app:layout_constraintTop_toBottomOf="@id/editAreaActivityLightLevelLabel">
 
         <RadioButton
             android:id="@+id/veryLowRadioButton"
@@ -76,37 +76,37 @@
     </RadioGroup>
 
     <Button
-        android:id="@+id/editAreaSaveButton"
+        android:id="@+id/editAreaActivitySaveButton"
         style="@style/button_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_space"
-        android:text="@string/save"
+        android:text="@string/buttonTitle_Save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lightLevelRadioGroup" />
+        app:layout_constraintTop_toBottomOf="@id/editAreaActivityLightLevelRadioGroup" />
 
     <Button
-        android:id="@+id/editAreaCancelButton"
+        android:id="@+id/editAreaActivityCancelButton"
         style="@style/button_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_gap"
-        android:text="@string/cancel"
+        android:text="@string/buttonTitle_Cancel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editAreaSaveButton" />
+        app:layout_constraintTop_toBottomOf="@id/editAreaActivitySaveButton" />
 
     <Button
-        android:id="@+id/editAreaDeleteButton"
+        android:id="@+id/editAreaActivityDeleteButton"
         style="@style/danger_button_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_gap"
-        android:text="@string/delete"
+        android:text="@string/buttonTitle_Delete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editAreaCancelButton" />
+        app:layout_constraintTop_toBottomOf="@id/editAreaActivityCancelButton" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

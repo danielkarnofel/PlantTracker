@@ -18,7 +18,7 @@ public class PlantsActivity extends AppCompatActivity {
         binding = ActivityPlantsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.addNewPlantButton.setOnClickListener(new View.OnClickListener() {
+        binding.plantsActivityAddNewPlantButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = EditPlantActivity.editPlantActivityIntentFactory(getApplicationContext());
@@ -26,7 +26,7 @@ public class PlantsActivity extends AppCompatActivity {
             }
         });
 
-        binding.homeButton.setOnClickListener(new View.OnClickListener() {
+        binding.plantsActivityHomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = MainActivity.mainActivityIntentFactory(getApplicationContext());
