@@ -1,6 +1,9 @@
 package com.example.planttracker;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,11 +17,27 @@ public class ViewAreaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityViewAreaBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        binding.viewAreaEditButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Clicking the edit button will start the EditPlantActivity.
+                startActivity(new Intent(ViewAreaActivity.this, EditAreaActivity.class));
+            }
+        });
 
-        // TODO: implement onClick for Edit button
-
-        // TODO: implement onClick for Back button
+        // implement onClick for Back button
+        /** Commented out, implemented prior to the implementation of AreasActivityIntentFactory.
+        binding.viewAreaBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Clicking the back button will send user back to AreasActivity.
+                startActivity(AreasActivity.AreasActivityIntentFactory(getApplicationContext()));
+            }
+        });
+        */
     }
-
-    // TODO: implement basic intent factory
+    // Basic ViewAreaIntentFactory
+    static Intent ViewAreaActivityIntentFactory(Context context){
+        return new Intent(context, ViewAreaActivity.class);
+    }
 }
