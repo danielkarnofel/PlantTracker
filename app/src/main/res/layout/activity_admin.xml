@@ -10,11 +10,11 @@
     <!--TODO: What admin options should there be? -->
 
     <Button
-        android:id="@+id/viewPlantsButton"
+        android:id="@+id/adminActivityHomeButton"
         style="@style/button_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
-        android:text="@string/home"
+        android:text="@string/buttonTitle_Home"
         android:layout_marginTop="@dimen/small_space"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

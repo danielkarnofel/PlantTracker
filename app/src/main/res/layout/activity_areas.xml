@@ -8,45 +8,45 @@
     tools:context=".AreasActivity">
 
     <TextView
-        android:id="@+id/areaRecyclerViewLabel"
+        android:id="@+id/areasActivitySubtitleTextView"
         style="@style/subtitle_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:text="@string/my_areas"
+        android:text="@string/subtitle_MyAreas"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/areaRecyclerView"
+        android:id="@+id/areasActivityRecyclerView"
         android:layout_width="@dimen/standard_width"
         android:layout_height="@dimen/large_height"
         android:layout_marginTop="@dimen/large_gap"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/areaRecyclerViewLabel" />
+        app:layout_constraintTop_toBottomOf="@id/areasActivitySubtitleTextView" />
 
     <Button
-        android:id="@+id/addNewAreaButton"
+        android:id="@+id/areasActivityAddNewAreaButton"
         style="@style/button_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/large_gap"
-        android:text="@string/add_new_area"
+        android:text="@string/buttonTitle_AddNewArea"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/areaRecyclerView" />
+        app:layout_constraintTop_toBottomOf="@id/areasActivityRecyclerView" />
 
     <Button
-        android:id="@+id/homeButton"
+        android:id="@+id/areasActivityHomeButton"
         style="@style/button_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
-        android:text="@string/home"
+        android:text="@string/buttonTitle_Home"
         android:layout_marginTop="@dimen/small_gap"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/addNewAreaButton" />
+        app:layout_constraintTop_toBottomOf="@id/areasActivityAddNewAreaButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
