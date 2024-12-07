@@ -20,7 +20,7 @@ public class ViewAreaActivity extends AppCompatActivity {
         binding.viewAreaEditButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Clicking the edit button will start the EditPlantActivity.
+                // Clicking the edit button will start the AreaActivity.
                 startActivity(new Intent(ViewAreaActivity.this, EditAreaActivity.class));
             }
         });
