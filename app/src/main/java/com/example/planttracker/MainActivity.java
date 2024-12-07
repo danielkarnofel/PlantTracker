@@ -1,26 +1,67 @@
 package com.example.planttracker;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.planttracker.database.AppRepository;
+import com.example.planttracker.database.entities.User;
 import com.example.planttracker.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
+
+    // TODO: loggedInUserID should be -1 by default, setting to 0 for testing
+    private int loggedInUserID = 0;
+    private User user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // TODO: implement onClick for My Plants button
+        // TODO: temporary user for testing only
+        user = new User("testuser", "password");
+        user.setAdmin(true);
 
-        // TODO: implement onClick for My Areas button
+        if (loggedInUserID == -1) {
+            Intent intent = LoginActivity.loginActivityIntentFactory(getApplicationContext());
+            startActivity(intent);
+        }
 
-        // TODO: implement onClick for Admin Options button
+        binding.viewAreasButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = PlantsActivity.PlantsActivityIntentFactory(getApplicationContext());
+                startActivity(intent);
+            }
+        });
+
+        binding.viewAreasButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = AreasActivity.AreasActivityIntentFactory(getApplicationContext());
+                startActivity(intent);
+            }
+        });
+
+        binding.viewAreasButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!user.isAdmin()) {
+                    return; // TODO: defensive, but is this check necessary?
+                }
+                Intent intent = AdminActivity.AdminActivityIntentFactory(getApplicationContext());
+                startActivity(intent);
+            }
+        });
     }
 
-    // TODO: implement basic intent factory
+    static Intent MainActivityIntentFactory(Context context) {
+        return new Intent(context, MainActivity.class);
+    }
 }

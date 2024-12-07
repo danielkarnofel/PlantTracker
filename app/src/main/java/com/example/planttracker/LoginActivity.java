@@ -1,5 +1,7 @@
 package com.example.planttracker;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,4 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     // TODO: implement basic intent factory
+    public static Intent loginActivityIntentFactory(Context applicationContext) {
+        return null;
+    }
 }

@@ -1,5 +1,7 @@
 package com.example.planttracker;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.planttracker.databinding.ActivityAdminBinding;
 
 public class AdminActivity extends AppCompatActivity {
-
     private ActivityAdminBinding binding;
 
     @Override
@@ -20,4 +21,7 @@ public class AdminActivity extends AppCompatActivity {
     }
 
     // TODO: implement basic intent factory
+    public static Intent AdminActivityIntentFactory(Context applicationContext) {
+        return null;
+    }
 }
