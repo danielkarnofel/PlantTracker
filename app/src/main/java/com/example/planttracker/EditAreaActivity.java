@@ -49,7 +49,8 @@ public class EditAreaActivity extends AppCompatActivity {
 
     }
 
-    static Intent EditAreaActivityIntentFactory(Context context){
-        return new Intent(context, EditAreaActivity.class);
+    // TODO: implement basic intent factory
+    public static Intent editAreaActivityIntentFactory(Context applicationContext) {
+        return null; // placeholder to make code compile
     }
 }

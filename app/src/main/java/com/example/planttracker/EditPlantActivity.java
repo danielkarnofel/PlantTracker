@@ -1,5 +1,7 @@
 package com.example.planttracker;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,4 +25,7 @@ public class EditPlantActivity extends AppCompatActivity {
     }
 
     // TODO: implement basic intent factory
+    public static Intent editPlantActivityIntentFactory(Context applicationContext) {
+        return null; // placeholder just to make code compile
+    }
 }

@@ -26,17 +26,17 @@ public class MainActivity extends AppCompatActivity {
 
         // TODO: temporary user for testing only
         user = new User("testuser", "password");
-        user.setAdmin(true);
+        user.setAdmin(false);
 
         if (loggedInUserID == -1) {
             Intent intent = LoginActivity.loginActivityIntentFactory(getApplicationContext());
             startActivity(intent);
         }
 
-        binding.viewAreasButton.setOnClickListener(new View.OnClickListener() {
+        binding.viewPlantsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = PlantsActivity.PlantsActivityIntentFactory(getApplicationContext());
+                Intent intent = PlantsActivity.plantsActivityIntentFactory(getApplicationContext());
                 startActivity(intent);
             }
         });
@@ -44,24 +44,24 @@ public class MainActivity extends AppCompatActivity {
         binding.viewAreasButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = AreasActivity.AreasActivityIntentFactory(getApplicationContext());
+                Intent intent = AreasActivity.areasActivityIntentFactory(getApplicationContext());
                 startActivity(intent);
             }
         });
 
-        binding.viewAreasButton.setOnClickListener(new View.OnClickListener() {
+        binding.adminButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!user.isAdmin()) {
                     return; // TODO: defensive, but is this check necessary?
                 }
-                Intent intent = AdminActivity.AdminActivityIntentFactory(getApplicationContext());
+                Intent intent = AdminActivity.adminActivityIntentFactory(getApplicationContext());
                 startActivity(intent);
             }
         });
     }
 
-    static Intent MainActivityIntentFactory(Context context) {
-        return new Intent(context, MainActivity.class);
+    static Intent mainActivityIntentFactory(Context applicationContext) {
+        return new Intent(applicationContext, MainActivity.class);
     }
 }

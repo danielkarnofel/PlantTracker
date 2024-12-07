@@ -3,6 +3,7 @@ package com.example.planttracker;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,13 +18,25 @@ public class PlantsActivity extends AppCompatActivity {
         binding = ActivityPlantsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // TODO: implement onClick for Add New Plant button
+        binding.addNewPlantButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = EditPlantActivity.editPlantActivityIntentFactory(getApplicationContext());
+                startActivity(intent);
+            }
+        });
 
-        // TODO: implement onClick for Home Button
+        binding.homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = MainActivity.mainActivityIntentFactory(getApplicationContext());
+                startActivity(intent);
+            }
+        });
     }
 
     // TODO: implement basic intent factory
-    public static Intent PlantsActivityIntentFactory(Context applicationContext) {
-        return null;
+    public static Intent plantsActivityIntentFactory(Context applicationContext) {
+        return new Intent(applicationContext, PlantsActivity.class);
     }
 }
