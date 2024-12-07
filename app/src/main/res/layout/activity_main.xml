@@ -47,10 +47,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/large_gap"
         android:text="@string/admin_options"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/viewAreasButton" />
-    <!-- TODO: change default visibility to gone, should be set programmatically -->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

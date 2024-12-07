@@ -35,7 +35,6 @@ public class AreasActivity extends AppCompatActivity {
         });
     }
 
-    // TODO: implement basic intent factory
     public static Intent areasActivityIntentFactory(Context applicationContext) {
         return new Intent(applicationContext, AreasActivity.class);
     }

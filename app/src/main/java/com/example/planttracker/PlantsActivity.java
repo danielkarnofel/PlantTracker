@@ -35,7 +35,6 @@ public class PlantsActivity extends AppCompatActivity {
         });
     }
 
-    // TODO: implement basic intent factory
     public static Intent plantsActivityIntentFactory(Context applicationContext) {
         return new Intent(applicationContext, PlantsActivity.class);
     }

@@ -13,9 +13,8 @@ import com.example.planttracker.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
-
-    // TODO: loggedInUserID should be -1 by default, setting to 0 for testing
-    private int loggedInUserID = 0;
+    private static final int LOGGED_OUT_USER_ID = -1;
+    private int loggedInUserID = LOGGED_OUT_USER_ID;
     private User user;
 
     @Override
@@ -24,14 +23,21 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // TODO: temporary user for testing only
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+        // TODO: temporary user for testing only, should be removed later
+        loggedInUserID = 0;
         user = new User("testuser", "password");
-        user.setAdmin(false);
+        user.setAdmin(true);
+        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-        if (loggedInUserID == -1) {
+        // If there is no user logged in, start the login activity
+        if (loggedInUserID == LOGGED_OUT_USER_ID) {
             Intent intent = LoginActivity.loginActivityIntentFactory(getApplicationContext());
             startActivity(intent);
         }
+
+        // If the user is an admin, show the Admin Options button
+        binding.adminButton.setVisibility(user.isAdmin() ? View.VISIBLE : View.GONE);
 
         binding.viewPlantsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,9 +58,6 @@ public class MainActivity extends AppCompatActivity {
         binding.adminButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!user.isAdmin()) {
-                    return; // TODO: defensive, but is this check necessary?
-                }
                 Intent intent = AdminActivity.adminActivityIntentFactory(getApplicationContext());
                 startActivity(intent);
             }
