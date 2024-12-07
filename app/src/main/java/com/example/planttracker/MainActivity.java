@@ -7,7 +7,6 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.planttracker.database.AppRepository;
 import com.example.planttracker.database.entities.User;
 import com.example.planttracker.databinding.ActivityMainBinding;
 
