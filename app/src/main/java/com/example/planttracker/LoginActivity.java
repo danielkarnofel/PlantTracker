@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        LiveData<User> userObserver = repository.getUserByUserName(username);
+        LiveData<User> userObserver = repository.getUserByUsername(username);
 
         userObserver.observe(this, user -> {
             if (user != null) {

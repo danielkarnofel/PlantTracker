@@ -51,7 +51,6 @@ public abstract class AppDatabase extends RoomDatabase {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
-            System.out.println("Database created !!!");
             Log.i(MainActivity.LOG_TAG, "Database created.");
             databaseWriteExecutor.execute(() -> {
                 UserDAO userDAO = INSTANCE.userDAO();

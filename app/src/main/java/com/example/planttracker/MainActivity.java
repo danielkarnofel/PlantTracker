@@ -1,7 +1,9 @@
 package com.example.planttracker;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         repository = AppRepository.getRepository(getApplication());
-        loginUser(savedInstanceState);
-        updateSharedPreference();
+        // TODO: loginUser(savedInstanceState);
+        // TODO: updateSharedPreference();
 
         // If there is no user logged in, start the login activity
         if (loggedInUserID == LOGGED_OUT_USER_ID) {
@@ -51,7 +53,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // If the user is an admin, show the Admin Options button
-        binding.mainActivityAdminOptionsButton.setVisibility(user.isAdmin() ? View.VISIBLE : View.GONE);
+        if (user != null) {
+            binding.mainActivityAdminOptionsButton.setVisibility(user.isAdmin() ? View.VISIBLE : View.GONE);
+        }
 
         binding.mainActivityMyPlantsButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
         // Username menu item
         MenuItem usernameItem = menu.findItem(R.id.menuUsernameOption);
         usernameItem.setVisible(true);
-        usernameItem.setTitle(user.getUsername());
+        // TODO: usernameItem.setTitle(user.getUsername());
         usernameItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(@NonNull MenuItem item) {

@@ -50,7 +50,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private boolean userAlreadyExists(String username) {
-        LiveData<User> userObserver = repository.getUserByUserName(username);
+        LiveData<User> userObserver = repository.getUserByUsername(username);
         boolean userExists = false;
 
         userObserver.observe(this, user -> {
