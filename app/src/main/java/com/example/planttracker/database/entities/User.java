@@ -1,6 +1,7 @@
 package com.example.planttracker.database.entities;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.example.planttracker.database.AppDatabase;
@@ -21,6 +22,7 @@ public class User {
         this.isAdmin = false;
     }
 
+    @Ignore
     public User (String username, String password, boolean isAdmin){
         this(username, password);
         this.isAdmin = isAdmin;

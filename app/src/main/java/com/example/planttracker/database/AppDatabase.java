@@ -51,18 +51,19 @@ public abstract class AppDatabase extends RoomDatabase {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
-            Log.i(MainActivity.TAG, "Database created.");
+            System.out.println("Database created !!!");
+            Log.i(MainActivity.LOG_TAG, "Database created.");
             databaseWriteExecutor.execute(() -> {
-                UserDAO dao = INSTANCE.userDAO();
-                dao.deleteAll();
+                UserDAO userDAO = INSTANCE.userDAO();
+                userDAO.deleteAll();
 
                 // Create default users:
                 User testAdmin1 = new User("admin1", "admin1", true);
                 User testUser1 = new User("testUser1", "testUser1");
                 User testUser2 = new User("testUser2", "testUser2");
 
-                // Insert all default users
-                dao.insert(testAdmin1, testUser1, testUser2);
+                // Insert all default users:
+                userDAO.insert(testAdmin1, testUser1, testUser2);
             });
         }
     };

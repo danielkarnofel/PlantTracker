@@ -24,6 +24,6 @@ public class LoginActivity extends AppCompatActivity {
 
     // TODO: implement basic intent factory
     public static Intent loginActivityIntentFactory(Context applicationContext) {
-        return null;
+        return new Intent(applicationContext, LoginActivity.class);
     }
 }
