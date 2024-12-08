@@ -5,6 +5,7 @@ import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
+import com.example.planttracker.MainActivity;
 import com.example.planttracker.database.entities.Area;
 import com.example.planttracker.database.entities.Plant;
 import com.example.planttracker.database.entities.User;
@@ -41,7 +42,7 @@ public class AppRepository {
         try {
             return future.get();
         } catch (InterruptedException | ExecutionException e) {
-            // TODO: add a log here
+            Log.d(MainActivity.LOG_TAG, "Problem getting AppRepository, thread error.");
         }
         return null;
     }
@@ -90,12 +91,12 @@ public class AppRepository {
         });
     }
 
-    public LiveData<User> getUserByUserName(String username) {
-        return userDAO.getUserByUserName(username);
+    public LiveData<User> getUserByUsername(String username) {
+        return userDAO.getUserByUsername(username);
     }
 
-    public LiveData<User> getUserByUserId(int userId) {
-        return userDAO.getUserByUserId(userId);
+    public LiveData<User> getUserByUserID(int userID) {
+        return userDAO.getUserByUserID(userID);
     }
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
