@@ -39,9 +39,6 @@ public class MainActivity extends AppCompatActivity {
         repository = AppRepository.getRepository(getApplication());
         loginUser(savedInstanceState);
 
-        // Temporary userID to bypass login
-        loggedInUserID = 1;
-
         updateSharedPreference();
         // If there is no user logged in, start the login activity
         if (loggedInUserID == LOGGED_OUT_USER_ID) {

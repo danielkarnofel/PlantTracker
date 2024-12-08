@@ -35,5 +35,8 @@ public interface UserDAO {
     @Query("SELECT * FROM " + AppDatabase.USER_TABLE + " WHERE userID == :userID")
     LiveData<User> getUserByUserID(int userID);
 
+    // Will check is a username exists in teh repository.
+    @Query("SELECT COUNT() FROM " + AppDatabase.USER_TABLE + " WHERE username == :username")
+    int checkUsernameExists(String username);
 
 }

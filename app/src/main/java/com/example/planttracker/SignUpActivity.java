@@ -1,13 +1,14 @@
 package com.example.planttracker;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
 
 import com.example.planttracker.database.AppRepository;
 import com.example.planttracker.database.entities.User;
@@ -30,12 +31,16 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // get the username entered in the signup
                 String mUsername = binding.signUpActivityUsernameEditText.getText().toString();
+                String mPassword1 = binding.signUpActivityPasswordEditText.getText().toString();
+                String mPassword2 = binding.signUpActivityConfirmEditText.getText().toString();
 
-                if (userAlreadyExists(mUsername)) {
-                   toastMaker("Username already exists.");
-                } else {
-                    //TODO: create a user account.
-                    toastMaker("Pending implementation");
+                if (signupInformationComplete(mUsername, mPassword1, mPassword2)) {
+                    if (repository.checkUsernameExists(mUsername)) {
+                        toastMaker("Username already exists.");
+                    } else {
+                        repository.insertUser(new User(mUsername, mPassword1, false));
+                        showSuccessDialog();
+                    }
                 }
             }
         });
@@ -49,18 +54,49 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-    private boolean userAlreadyExists(String username) {
-        LiveData<User> userObserver = repository.getUserByUsername(username);
-        boolean userExists = false;
+    private boolean signupInformationComplete(String username, String password1, String password2) {
+        if (username.isEmpty()) {
+            toastMaker("Missing username!");
+            binding.signUpActivityUsernameEditText.setSelection(0);
+            return false;
+        }
 
-        userObserver.observe(this, user -> {
-            //if (user != null ) {
-            //TODO: figure out how to pass the information to top method.
-            //userExists = true;
-            //}
+        if (password1.isEmpty()) {
+            toastMaker("Missing password!");
+            binding.signUpActivityPasswordEditText.setSelection(0);
+            return false;
+        }
+
+        if (password2.isEmpty()) {
+            toastMaker("Missing password confirmation!");
+            binding.signUpActivityConfirmEditText.setSelection(0);
+            return false;
+        }
+
+        if (!password1.equals(password2)) {
+            toastMaker("Passwords does not match!");
+            binding.signUpActivityPasswordEditText.setSelection(0);
+            return false;
+        }
+
+        return true;
+    }
+
+    private void showSuccessDialog() {
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(SignUpActivity.this);
+
+        alertBuilder.setTitle("Success");
+        alertBuilder.setMessage("Your account was successfully created.");
+        alertBuilder.setCancelable(false);
+        alertBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intent = LoginActivity.loginActivityIntentFactory(getApplicationContext());
+                startActivity(intent);
+            }
         });
 
-        return userExists;
+        alertBuilder.create().show();
     }
 
     private void toastMaker(String message) {

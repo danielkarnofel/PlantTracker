@@ -19,12 +19,14 @@ public class AppRepository {
     private final PlantDAO plantDAO;
     private final UserDAO userDAO;
     private static AppRepository repository;
+    private int usernameCount;
 
     private AppRepository(Application application) {
         AppDatabase db = AppDatabase.getDatabase(application);
         this.areaDAO = db.areaDAO();
         this.plantDAO = db.plantDAO();
         this.userDAO = db.userDAO();
+        usernameCount = 0;
     }
 
     public static AppRepository getRepository(Application application) {
@@ -97,6 +99,24 @@ public class AppRepository {
 
     public LiveData<User> getUserByUserID(int userID) {
         return userDAO.getUserByUserID(userID);
+    }
+
+    public boolean checkUsernameExists(String username) {
+        Future<Integer> future = AppDatabase.databaseWriteExecutor.submit(new Callable<Integer>() {
+            @Override
+            public Integer call() throws Exception {
+                usernameCount = userDAO.checkUsernameExists(username);
+                return usernameCount;
+            }
+        });
+
+        try {
+            future.get();
+        } catch (InterruptedException | ExecutionException e) {
+            Log.d(MainActivity.LOG_TAG, "Cannot check if the username exists.");
+        }
+
+        return usernameCount > 0;
     }
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
