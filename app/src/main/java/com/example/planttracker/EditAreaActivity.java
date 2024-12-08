@@ -2,6 +2,7 @@ package com.example.planttracker;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
@@ -11,12 +12,18 @@ import com.example.planttracker.databinding.ActivityEditAreaBinding;
 
 public class EditAreaActivity extends AppCompatActivity {
     private ActivityEditAreaBinding binding;
+    private int loggedInUserID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityEditAreaBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // Get userID from shared preferences
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(getString(R.string.sharedPreferencesFileName), Context.MODE_PRIVATE);
+        loggedInUserID = sharedPreferences.getInt(getString(R.string.sharedPreferencesUserIDKey), MainActivity.LOGGED_OUT_USER_ID);
+
         // TODO: implement onClick for save button
         // todo is not complete, more work on this button might be needed.
         binding.editAreaActivitySaveButton.setOnClickListener(new View.OnClickListener() {

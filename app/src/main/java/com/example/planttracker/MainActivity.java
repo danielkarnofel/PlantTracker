@@ -20,14 +20,14 @@ import com.example.planttracker.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
     public static final String LOG_TAG = "PLANT_TRACKER"; // Tag for LogCat messages
-    static final String USER_ID_EXTRA_KEY = "com.example.planttracker.USER_ID_EXTRA_TAG";
+    static final String MAIN_ACTIVITY_USER_ID_EXTRA_KEY = "com.example.planttracker.MAIN_ACTIVITY_USER_ID_EXTRA_KEY";
     static final String SHARED_PREFERENCES_USER_ID_KEY = "com.example.planttracker.SHARED_PREFERENCES_USER_ID_KEY";
     static final String SAVED_INSTANCE_STATE_USER_ID_KEY = "com.example.planttracker.SAVED_INSTANCE_STATE_USER_ID_KEY";
 
     private ActivityMainBinding binding;
     AppRepository repository;
-    private static final int LOGGED_OUT_USER_ID = -1;
-    private int loggedInUserID = LOGGED_OUT_USER_ID;
+    public static final int LOGGED_OUT_USER_ID = -1;
+    private static int loggedInUserID = LOGGED_OUT_USER_ID;
     private User user;
 
     @Override
@@ -36,31 +36,23 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        // TODO: temporary userID for testing only, should be removed later
-        loggedInUserID = 1;
-        // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
         repository = AppRepository.getRepository(getApplication());
         loginUser(savedInstanceState);
 
+        // Temporary userID to bypass login
+        loggedInUserID = 1;
+
+        updateSharedPreference();
         // If there is no user logged in, start the login activity
         if (loggedInUserID == LOGGED_OUT_USER_ID) {
             Intent intent = LoginActivity.loginActivityIntentFactory(getApplicationContext());
             startActivity(intent);
-        }
-        updateSharedPreference();
-
-        // If the user is an admin, show the Admin Options button
-        if (user != null) {
-            binding.mainActivityAdminOptionsButton.setVisibility(user.isAdmin() ? View.VISIBLE : View.GONE);
         }
 
         binding.mainActivityMyPlantsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = PlantsActivity.plantsActivityIntentFactory(getApplicationContext());
-                intent.putExtra(USER_ID_EXTRA_KEY, loggedInUserID);
                 startActivity(intent);
             }
         });
@@ -69,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = AreasActivity.areasActivityIntentFactory(getApplicationContext());
-                intent.putExtra(USER_ID_EXTRA_KEY, loggedInUserID);
                 startActivity(intent);
             }
         });
@@ -78,14 +69,23 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = AdminActivity.adminActivityIntentFactory(getApplicationContext());
-                intent.putExtra(USER_ID_EXTRA_KEY, loggedInUserID);
                 startActivity(intent);
             }
         });
     }
 
-    static Intent mainActivityIntentFactory(Context applicationContext) {
-        return new Intent(applicationContext, MainActivity.class);
+    static Intent mainActivityIntentFactory(Context applicationContext, int loggedInUserID) {
+        Intent intent = new Intent(applicationContext, MainActivity.class);
+        intent.putExtra(MAIN_ACTIVITY_USER_ID_EXTRA_KEY, loggedInUserID);
+        return intent;
+    }
+
+    public static int getLoggedInUserID() {
+        return loggedInUserID;
+    }
+
+    public static void setLoggedInUserID(int loggedInUserID) {
+        MainActivity.loggedInUserID = loggedInUserID;
     }
 
     private void loginUser(Bundle savedInstanceState) {
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
             loggedInUserID = savedInstanceState.getInt(SHARED_PREFERENCES_USER_ID_KEY, LOGGED_OUT_USER_ID);
         }
         if (loggedInUserID == LOGGED_OUT_USER_ID) {
-            loggedInUserID = getIntent().getIntExtra(USER_ID_EXTRA_KEY, LOGGED_OUT_USER_ID);
+            loggedInUserID = getIntent().getIntExtra(MAIN_ACTIVITY_USER_ID_EXTRA_KEY, LOGGED_OUT_USER_ID);
         }
         if (loggedInUserID == LOGGED_OUT_USER_ID) {
             return;
@@ -104,8 +104,13 @@ public class MainActivity extends AppCompatActivity {
         LiveData<User> userObserver = repository.getUserByUserID(loggedInUserID);
         userObserver.observe(this, user -> {
             this.user = user;
+            // Re-create the menu once user is logged in
             if (user != null) {
                 invalidateOptionsMenu();
+            }
+            // Hide the admin button if the user is not an admin
+            if (user != null) {
+                binding.mainActivityAdminOptionsButton.setVisibility(user.isAdmin() ? View.VISIBLE : View.GONE);
             }
         });
     }
@@ -143,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
         usernameItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(@NonNull MenuItem item) {
-                startActivity(MainActivity.mainActivityIntentFactory(getApplicationContext()));
+                startActivity(MainActivity.mainActivityIntentFactory(getApplicationContext(), loggedInUserID));
                 return false;
             }
         });
@@ -183,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
     private void logout() {
         loggedInUserID = LOGGED_OUT_USER_ID;
         updateSharedPreference();
-        getIntent().putExtra(USER_ID_EXTRA_KEY, LOGGED_OUT_USER_ID);
+        getIntent().putExtra(MAIN_ACTIVITY_USER_ID_EXTRA_KEY, LOGGED_OUT_USER_ID);
         startActivity(LoginActivity.loginActivityIntentFactory(getApplicationContext()));
     }
 
