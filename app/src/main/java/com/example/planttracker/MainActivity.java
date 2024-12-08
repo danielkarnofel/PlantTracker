@@ -20,13 +20,12 @@ import com.example.planttracker.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
     public static final String LOG_TAG = "PLANT_TRACKER"; // Tag for LogCat messages
-    private static final String USER_ID_EXTRA_KEY = "com.example.planttracker.USER_ID_EXTRA_TAG";
-    private static final String SHARED_PREFERENCES_USER_ID_KEY = "com.example.planttracker.SHARED_PREFERENCES_USER_ID_KEY";
-    private static final String SAVED_INSTANCE_STATE_USER_ID_KEY = "com.example.planttracker.SAVED_INSTANCE_STATE_USER_ID_KEY";
-
-    AppRepository repository;
+    static final String USER_ID_EXTRA_KEY = "com.example.planttracker.USER_ID_EXTRA_TAG";
+    static final String SHARED_PREFERENCES_USER_ID_KEY = "com.example.planttracker.SHARED_PREFERENCES_USER_ID_KEY";
+    static final String SAVED_INSTANCE_STATE_USER_ID_KEY = "com.example.planttracker.SAVED_INSTANCE_STATE_USER_ID_KEY";
 
     private ActivityMainBinding binding;
+    AppRepository repository;
     private static final int LOGGED_OUT_USER_ID = -1;
     private int loggedInUserID = LOGGED_OUT_USER_ID;
     private User user;
@@ -43,14 +42,14 @@ public class MainActivity extends AppCompatActivity {
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         repository = AppRepository.getRepository(getApplication());
-        // TODO: loginUser(savedInstanceState);
-        // TODO: updateSharedPreference();
+        loginUser(savedInstanceState);
 
         // If there is no user logged in, start the login activity
         if (loggedInUserID == LOGGED_OUT_USER_ID) {
             Intent intent = LoginActivity.loginActivityIntentFactory(getApplicationContext());
             startActivity(intent);
         }
+        updateSharedPreference();
 
         // If the user is an admin, show the Admin Options button
         if (user != null) {
@@ -133,14 +132,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        if (loggedInUserID == LOGGED_OUT_USER_ID) {
+        if (loggedInUserID == LOGGED_OUT_USER_ID || user == null) {
             return false;
         }
 
         // Username menu item
         MenuItem usernameItem = menu.findItem(R.id.menuUsernameOption);
         usernameItem.setVisible(true);
-        // TODO: usernameItem.setTitle(user.getUsername());
+        usernameItem.setTitle(user.getUsername());
         usernameItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(@NonNull MenuItem item) {

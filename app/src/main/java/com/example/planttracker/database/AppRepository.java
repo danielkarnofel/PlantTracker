@@ -42,7 +42,7 @@ public class AppRepository {
         try {
             return future.get();
         } catch (InterruptedException | ExecutionException e) {
-            Log.d(MainActivity.LOG_TAG, e.getMessage());
+            Log.d(MainActivity.LOG_TAG, "Problem getting AppRepository, thread error.");
         }
         return null;
     }
@@ -92,11 +92,11 @@ public class AppRepository {
     }
 
     public LiveData<User> getUserByUsername(String username) {
-        return userDAO.getUserByUserName(username);
+        return userDAO.getUserByUsername(username);
     }
 
     public LiveData<User> getUserByUserID(int userID) {
-        return userDAO.getUserByUserId(userID);
+        return userDAO.getUserByUserID(userID);
     }
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

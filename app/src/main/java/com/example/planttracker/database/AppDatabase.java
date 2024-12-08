@@ -31,13 +31,12 @@ public abstract class AppDatabase extends RoomDatabase {
     static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
     static AppDatabase getDatabase(final Context context) {
-        if(INSTANCE == null){
-            synchronized (AppDatabase.class){
+        if (INSTANCE == null) {
+            synchronized (AppDatabase.class) {
                 if (INSTANCE == null){
                     INSTANCE = Room.databaseBuilder(
                                     context.getApplicationContext(),
-                                    AppDatabase.class,
-                                    DATABASE_NAME)
+                                    AppDatabase.class, DATABASE_NAME)
                             .fallbackToDestructiveMigration()
                             .addCallback(addDefaultValues)
                             .build();
@@ -52,16 +51,16 @@ public abstract class AppDatabase extends RoomDatabase {
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
             Log.i(MainActivity.LOG_TAG, "Database created.");
+
+            // Create default users:
+            User testAdmin1 = new User("admin1", "admin1", true);
+            User testUser1 = new User("testUser1", "testUser1");
+            User testUser2 = new User("testUser2", "testUser2");
+
+            // Clear the user table and insert all default users:
             databaseWriteExecutor.execute(() -> {
                 UserDAO userDAO = INSTANCE.userDAO();
                 userDAO.deleteAll();
-
-                // Create default users:
-                User testAdmin1 = new User("admin1", "admin1", true);
-                User testUser1 = new User("testUser1", "testUser1");
-                User testUser2 = new User("testUser2", "testUser2");
-
-                // Insert all default users:
                 userDAO.insert(testAdmin1, testUser1, testUser2);
             });
         }

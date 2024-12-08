@@ -29,11 +29,11 @@ public interface UserDAO {
 
     // Will select a user by username.
     @Query("SELECT * FROM " + AppDatabase.USER_TABLE + " WHERE username == :username")
-    LiveData<User> getUserByUserName(String username);
+    LiveData<User> getUserByUsername(String username);
 
     // Will select a user by userID.
     @Query("SELECT * FROM " + AppDatabase.USER_TABLE + " WHERE userID == :userID")
-    LiveData<User> getUserByUserId(int userID);
+    LiveData<User> getUserByUserID(int userID);
 
 
 }
