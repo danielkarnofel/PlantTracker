@@ -24,9 +24,9 @@ public class MainActivity extends AppCompatActivity {
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
         // TODO: temporary user for testing only, should be removed later
-        loggedInUserID = 0;
-        user = new User("testuser", "password");
-        user.setAdmin(true);
+//        loggedInUserID = 0;
+//        user = new User("testuser", "password");
+//        user.setAdmin(true);
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         // If there is no user logged in, start the login activity
