@@ -32,8 +32,8 @@ public interface UserDAO {
     LiveData<User> getUserByUserName(String username);
 
     // Will select a user by userID.
-    @Query("SELECT * FROM " + AppDatabase.USER_TABLE + " WHERE userID == :userId")
-    LiveData<User> getUserByUserId(int userId);
+    @Query("SELECT * FROM " + AppDatabase.USER_TABLE + " WHERE userID == :userID")
+    LiveData<User> getUserByUserId(int userID);
 
 
 }
