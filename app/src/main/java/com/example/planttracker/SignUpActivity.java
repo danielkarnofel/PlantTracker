@@ -40,7 +40,7 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
-        binding.signUpActivitySignUpButton.setOnClickListener(new View.OnClickListener() {
+        binding.signUpActivityCancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = LoginActivity.loginActivityIntentFactory(getApplicationContext());
