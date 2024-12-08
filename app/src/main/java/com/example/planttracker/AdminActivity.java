@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,10 +26,15 @@ public class AdminActivity extends AppCompatActivity {
         loggedInUserID = sharedPreferences.getInt(getString(R.string.sharedPreferencesUserIDKey), MainActivity.LOGGED_OUT_USER_ID);
 
 
-        // TODO: implement onClick for Home button
+        binding.adminActivityHomeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = MainActivity.mainActivityIntentFactory(getApplicationContext(), loggedInUserID);
+                startActivity(intent);
+            }
+        });
     }
 
-    // TODO: implement basic intent factory
     public static Intent adminActivityIntentFactory(Context applicationContext) {
         return new Intent(applicationContext, AdminActivity.class);
     }
