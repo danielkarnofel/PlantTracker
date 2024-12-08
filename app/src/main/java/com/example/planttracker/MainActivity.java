@@ -11,6 +11,8 @@ import com.example.planttracker.database.entities.User;
 import com.example.planttracker.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
+    public static final String TAG = "PLANT_TRACKER"; // Tag for LogCat messages
+
     private ActivityMainBinding binding;
     private static final int LOGGED_OUT_USER_ID = -1;
     private int loggedInUserID = LOGGED_OUT_USER_ID;
@@ -23,10 +25,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-        // TODO: temporary user for testing only, should be removed later
-        loggedInUserID = 0;
-        user = new User("testuser", "password");
-        user.setAdmin(true);
+        // TODO: temporary userID for testing only, should be removed later
+        loggedInUserID = 1;
         // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
         // If there is no user logged in, start the login activity

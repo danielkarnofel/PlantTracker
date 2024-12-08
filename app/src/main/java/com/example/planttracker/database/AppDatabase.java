@@ -1,6 +1,7 @@
 package com.example.planttracker.database;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
@@ -9,6 +10,7 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.example.planttracker.MainActivity;
 import com.example.planttracker.database.entities.Area;
 import com.example.planttracker.database.entities.Plant;
 import com.example.planttracker.database.entities.User;
@@ -29,7 +31,6 @@ public abstract class AppDatabase extends RoomDatabase {
     static final ExecutorService databaseWriteExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
     static AppDatabase getDatabase(final Context context) {
-        /// *** Code borrowed from HW4 ***
         if(INSTANCE == null){
             synchronized (AppDatabase.class){
                 if (INSTANCE == null){
@@ -44,24 +45,24 @@ public abstract class AppDatabase extends RoomDatabase {
             }
         }
         return INSTANCE;
-        /// *** End code borrowed from HW4 ***
     }
 
     private static final RoomDatabase.Callback addDefaultValues = new RoomDatabase.Callback() {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
-            // TODO: Add a log here
+            Log.i(MainActivity.TAG, "Database created.");
             databaseWriteExecutor.execute(() -> {
-                /// *** The start of default data for userDao, code borrowed from HW4. ***
                 UserDAO dao = INSTANCE.userDAO();
                 dao.deleteAll();
-                User admin = new User("admin1", "admin1");
-                admin.setAdmin(true);
-                dao.insert(admin);
-                User testUser1 = new User("testuser1", "testuser1");
-                /// *** The end of default data for userDao, code borrowed from HW4. ***
 
+                // Create default users:
+                User testAdmin1 = new User("admin1", "admin1", true);
+                User testUser1 = new User("testUser1", "testUser1");
+                User testUser2 = new User("testUser2", "testUser2");
+
+                // Insert all default users
+                dao.insert(testAdmin1, testUser1, testUser2);
             });
         }
     };

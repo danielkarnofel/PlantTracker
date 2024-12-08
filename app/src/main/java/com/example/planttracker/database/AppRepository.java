@@ -5,6 +5,8 @@ import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 
+import com.example.planttracker.MainActivity;
+import com.example.planttracker.R;
 import com.example.planttracker.database.entities.Area;
 import com.example.planttracker.database.entities.Plant;
 import com.example.planttracker.database.entities.User;
@@ -41,7 +43,7 @@ public class AppRepository {
         try {
             return future.get();
         } catch (InterruptedException | ExecutionException e) {
-            // TODO: add a log here
+            Log.d(MainActivity.TAG, e.getMessage());
         }
         return null;
     }

@@ -18,7 +18,12 @@ public class User {
     public User (String username, String password){
         this.username = username;
         this.password = password;
-        isAdmin = false;
+        this.isAdmin = false;
+    }
+
+    public User (String username, String password, boolean isAdmin){
+        this(username, password);
+        this.isAdmin = isAdmin;
     }
 
     @Override
