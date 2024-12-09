@@ -3,6 +3,7 @@
 
     <!--Sizes-->
     <dimen name="standard_width">320dp</dimen>
+    <dimen name="item_width">260dp</dimen>
     <dimen name="standard_height">60dp</dimen>
     <dimen name="large_height">320dp</dimen>
 

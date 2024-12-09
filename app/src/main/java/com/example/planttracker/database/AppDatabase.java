@@ -16,7 +16,9 @@ import com.example.planttracker.database.entities.Plant;
 import com.example.planttracker.database.entities.User;
 import com.example.planttracker.database.typeConverters.LightLevelTypeConverter;
 import com.example.planttracker.database.typeConverters.LocalDateTimeTypeConverter;
+import com.example.planttracker.utilities.LightLevel;
 
+import java.time.LocalDateTime;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 @TypeConverters({LightLevelTypeConverter.class, LocalDateTimeTypeConverter.class})
@@ -57,11 +59,19 @@ public abstract class AppDatabase extends RoomDatabase {
             User testUser1 = new User("testUser1", "testUser1");
             User testUser2 = new User("testUser2", "testUser2");
 
+            // TODO: Remove this once Add New Plant function is working
+            // Create default plant (for testing only)
+            Plant testPlant1 = new Plant(1, 1, "Mr. Leaves", "Fern", LightLevel.MEDIUM, 5, LocalDateTime.now());
+            Plant testPlant2 = new Plant(1, 2, "Leaf Erikson", "Shrub", LightLevel.HIGH, 7, LocalDateTime.now());
+
             // Clear the user table and insert all default users:
             databaseWriteExecutor.execute(() -> {
                 UserDAO userDAO = INSTANCE.userDAO();
                 userDAO.deleteAll();
                 userDAO.insert(testAdmin1, testUser1, testUser2);
+
+                PlantDAO plantDAO = INSTANCE.plantDAO();
+                plantDAO.insert(testPlant1, testPlant2);
             });
         }
     };
