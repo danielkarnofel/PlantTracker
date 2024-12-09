@@ -10,6 +10,7 @@ import com.example.planttracker.database.entities.Area;
 import com.example.planttracker.database.entities.Plant;
 import com.example.planttracker.database.entities.User;
 
+import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
@@ -77,6 +78,10 @@ public class AppRepository {
             plantDAO.delete(plant);
         });
     }
+
+    public LiveData<List<Plant>> getAllPlantsByUserID(int userID) {
+        return plantDAO.getAllPlantsByUserID(userID);
+    }
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     // User methods
@@ -118,6 +123,8 @@ public class AppRepository {
 
         return usernameCount > 0;
     }
+
+
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 }

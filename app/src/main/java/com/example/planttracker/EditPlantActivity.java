@@ -31,7 +31,8 @@ public class EditPlantActivity extends AppCompatActivity {
     }
 
     // TODO: implement basic intent factory
-    public static Intent editPlantActivityIntentFactory(Context applicationContext) {
+    public static Intent editPlantActivityIntentFactory(Context applicationContext, boolean isNewPlant) {
+        // TODO: if isNewPlant is true, the EditPlantActivity will need to create a new plant when the user presses save
         return null; // placeholder just to make code compile
     }
 }
