@@ -24,6 +24,8 @@ public class PlantsActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(getString(R.string.sharedPreferencesFileName), Context.MODE_PRIVATE);
         loggedInUserID = sharedPreferences.getInt(getString(R.string.sharedPreferencesUserIDKey), MainActivity.LOGGED_OUT_USER_ID);
 
+        // TODO: Set up recycler view
+
         binding.plantsActivityAddNewPlantButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
