@@ -13,6 +13,9 @@ import com.example.planttracker.databinding.ActivityEditPlantBinding;
 public class EditPlantActivity extends AppCompatActivity {
     private ActivityEditPlantBinding binding;
     private int loggedInUserID;
+    private int selectedPlantID;
+    static final String EDIT_PLANT_ACTIVITY_SELECTED_PLANT_ID_EXTRA_KEY = "com.example.planttracker.EDIT_PLANT_ACTIVITY_SELECTED_PLANT_ID_EXTRA_KEY";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +33,7 @@ public class EditPlantActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // TODO: implement functionality
                 // following functionality, the button will return the user to ViewPlantActivity
-                startActivity(ViewPlantActivity.viewPlantActivityIntentFactory(getApplicationContext()));
+                startActivity(ViewPlantActivity.viewPlantActivityIntentFactory(getApplicationContext(), selectedPlantID));
             }
         });
 
@@ -40,7 +43,7 @@ public class EditPlantActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // TODO: if isNewPlant is true, the EditPlantActivity will need to delete the new plant from the database when the user presses cancel
                 // following functionality, the button will return the user to ViewPlantActivity
-                startActivity(ViewPlantActivity.viewPlantActivityIntentFactory(getApplicationContext()));
+                startActivity(ViewPlantActivity.viewPlantActivityIntentFactory(getApplicationContext(), selectedPlantID));
             }
         });
 
@@ -54,9 +57,12 @@ public class EditPlantActivity extends AppCompatActivity {
     }
 
     // TODO: implement basic intent factory
-    public static Intent editPlantActivityIntentFactory(Context applicationContext, boolean isNewPlant) {
+    public static Intent editPlantActivityIntentFactory(Context applicationContext, int selectedPlantID) {
         // TODO: if isNewPlant is true, the EditPlantActivity will need to create a new plant when the user presses save
+        // selectedPlantID can be passed as -1 to indicate a new plant is being created
 
-        return null; // placeholder just to make code compile
+        Intent intent = new Intent(applicationContext, EditPlantActivity.class);
+        intent.putExtra(EDIT_PLANT_ACTIVITY_SELECTED_PLANT_ID_EXTRA_KEY, selectedPlantID);
+        return intent;
     }
 }

@@ -13,6 +13,9 @@ import com.example.planttracker.databinding.ActivityViewPlantBinding;
 public class ViewPlantActivity extends AppCompatActivity {
     private ActivityViewPlantBinding binding;
     private int loggedInUserID;
+    private int selectedPlantID;
+    static final String VIEW_PLANT_ACTIVITY_SELECTED_PLANT_ID_EXTRA_KEY = "com.example.planttracker.VIEW_PLANT_ACTIVITY_SELECTED_PLANT_ID_EXTRA_KEY";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +47,10 @@ public class ViewPlantActivity extends AppCompatActivity {
     }
 
     // implement basic intent factory
-    static Intent viewPlantActivityIntentFactory(Context context){
-        return new Intent(context, ViewPlantActivity.class);
+    public static Intent viewPlantActivityIntentFactory(Context context, int selectedPlantID){
+        Intent intent = new Intent(context, ViewPlantActivity.class);
+        intent.putExtra(VIEW_PLANT_ACTIVITY_SELECTED_PLANT_ID_EXTRA_KEY, selectedPlantID);
+        return intent;
     }
 
 }
