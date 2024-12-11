@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.PlantTracker" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.PlantTracker" parent="Theme.Material3.DayNight">
         <item name="android:backgroundTint">@color/primary_light</item>
         <!-- Set the color of the Action Bar -->
         <item name="colorPrimary">@color/secondary_light</item>
@@ -10,13 +10,32 @@
     <style name="Theme.PlantTracker" parent="Base.Theme.PlantTracker" />
 
     <style name="light_level_radio_style">
-        <item name="android:button">@null</item> <!-- To remove the default radio button indicator -->
+        <item name="android:button">@null
+        </item> <!-- To remove the default radio button indicator -->
         <item name="android:text">@null</item> <!-- To remove the default radio button text -->
         <item name="android:drawableStart">@drawable/light_level_shape</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_marginHorizontal">8dp</item>
         <item name="android:minWidth">0dp</item>
         <item name="android:gravity">center</item>
+    </style>
+
+
+    <style name="recycler_item_style">
+        <item name="android:layout_width">@dimen/recycler_item_width</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_margin">@dimen/large_gap</item>
+        <item name="android:background">@color/secondary_light</item>
+        <item name="android:backgroundTint">@color/secondary_light</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="recycler_view_style">
+        <item name="android:layout_marginTop">@dimen/large_gap</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingHorizontal">@dimen/recycler_view_padding</item>
+        <item name="android:clipToPadding">false</item>
     </style>
 
 
