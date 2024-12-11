@@ -44,8 +44,13 @@ public class EditPlantActivity extends AppCompatActivity {
             }
         });
 
-        // TODO: implement onClick for Delete button
-
+        // onClick for Delete button
+        binding.editPlantActivityDeleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(PlantsActivity.plantsActivityIntentFactory(getApplicationContext()));
+            }
+        });;
     }
 
     // TODO: implement basic intent factory
