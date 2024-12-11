@@ -55,22 +55,27 @@
 
         <RadioButton
             android:id="@+id/veryLowRadioButton"
+            android:tag="VERY_LOW"
             style="@style/light_level_radio_style" />
 
         <RadioButton
             android:id="@+id/lowRadioButton"
+            android:tag="LOW"
             style="@style/light_level_radio_style" />
 
         <RadioButton
             android:id="@+id/mediumRadioButton"
+            android:tag="MEDIUM"
             style="@style/light_level_radio_style" />
 
         <RadioButton
             android:id="@+id/highRadioButton"
+            android:tag="HIGH"
             style="@style/light_level_radio_style" />
 
         <RadioButton
             android:id="@+id/veryHighRadioButton"
+            android:tag="VERY_HIGH"
             style="@style/light_level_radio_style" />
 
     </RadioGroup>

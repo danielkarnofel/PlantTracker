@@ -1,21 +1,29 @@
 package com.example.planttracker.utilities;
 
+import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+
 import androidx.annotation.NonNull;
+
+import com.example.planttracker.R;
 
 public enum LightLevel {
 
-    VERY_LOW (1, "Very Low"),
-    LOW (2, "Low"),
-    MEDIUM (3, "Medium"),
-    HIGH (4, "High"),
-    VERY_HIGH (5, "Very High");
+    VERY_LOW (1, "Very Low", R.color.light_level_very_low),
+    LOW (2, "Low", R.color.light_level_low),
+    MEDIUM (3, "Medium", R.color.light_level_medium),
+    HIGH (4, "High", R.color.light_level_high),
+    VERY_HIGH (5, "Very High", R.color.light_level_very_high);
 
     private final int level;
     private final String representation;
+    private final int color;
 
-    private LightLevel(int level, String representation) {
+    private LightLevel(int level, String representation, int color) {
         this.level = level;
         this.representation = representation;
+        this.color = color;
     }
 
     public int getLevelAsInt() {
@@ -30,6 +38,20 @@ public enum LightLevel {
             }
         }
         return null;
+    }
+
+    public int getLightLevelColor() {
+        return this.color;
+    }
+
+    public static LightLevel getSelectionFromRadioGroup(View view, RadioGroup radioGroup) {
+        int checkedId = radioGroup.getCheckedRadioButtonId();
+        if (checkedId == -1) {
+            return null;
+        }
+        RadioButton checkedRadioButton = view.findViewById(checkedId);
+        String checkedRadioButtonTag =  (String) checkedRadioButton.getTag();
+        return LightLevel.valueOf(checkedRadioButtonTag);
     }
 
     @Override

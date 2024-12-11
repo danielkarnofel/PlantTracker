@@ -21,7 +21,7 @@ public class PlantsActivity extends AppCompatActivity {
     private ActivityPlantsBinding binding;
     private int loggedInUserID;
     private PlantViewModel plantViewModel;
-    private static final int NEW_PLANT_ID = -1;
+    public static final int NEW_PLANT_ID = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
