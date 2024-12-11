@@ -25,7 +25,7 @@ public class PlantAdapter extends ListAdapter<Plant, PlantViewHolder> {
         holder.bind(current);
     }
 
-    public static class GymLogDiff extends DiffUtil.ItemCallback<Plant> {
+    public static class PlantDiff extends DiffUtil.ItemCallback<Plant> {
         @Override
         public boolean areItemsTheSame(@NonNull Plant oldItem, @NonNull Plant newItem) {
             return oldItem == newItem;
