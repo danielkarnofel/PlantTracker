@@ -35,8 +35,17 @@ public class EditPlantActivity extends AppCompatActivity {
         });
 
         // TODO: implement onClick for Cancel button
+        binding.editPlantActivityCancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // TODO: if isNewPlant is true, the EditPlantActivity will need to delete the new plant from the database when the user presses cancel
+                // following functionality, the button will return the user to ViewPlantActivity
+                startActivity(ViewPlantActivity.viewPlantActivityIntentFactory(getApplicationContext()));
+            }
+        });
 
         // TODO: implement onClick for Delete button
+
     }
 
     // TODO: implement basic intent factory
