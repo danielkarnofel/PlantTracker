@@ -27,4 +27,7 @@ public interface PlantDAO {
     // TODO: Refactor this method to take a sorting parameter? Or make multiple query methods and control sorting elsewhere?
     @Query("SELECT * FROM " + AppDatabase.PLANT_TABLE + " WHERE userID = :userID ORDER BY lastWatered DESC")
     LiveData<List<Plant>> getAllPlantsByUserID(int userID);
+
+    @Query("SELECT * FROM " + AppDatabase.PLANT_TABLE + " WHERE plantID = :selectedPlantID")
+    LiveData<Plant> getPlantByID(int selectedPlantID);
 }

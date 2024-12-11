@@ -40,38 +40,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/viewAreaActivityNameTextView" />
 
-    <RadioGroup
-        android:id="@+id/viewAreaActivityLightLevelRadioGroup"
+    <TextView
+        android:id="@+id/viewAreaActivityLightLevelTextView"
+        style="@style/large_text_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_gap"
-        android:gravity="center"
-        android:orientation="horizontal"
+        android:text="@string/no_data"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewAreaActivityLightLevelLabel">
-
-        <RadioButton
-            android:id="@+id/veryLowRadioButton"
-            style="@style/light_level_radio_style" />
-
-        <RadioButton
-            android:id="@+id/lowRadioButton"
-            style="@style/light_level_radio_style" />
-
-        <RadioButton
-            android:id="@+id/mediumRadioButton"
-            style="@style/light_level_radio_style" />
-
-        <RadioButton
-            android:id="@+id/highRadioButton"
-            style="@style/light_level_radio_style" />
-
-        <RadioButton
-            android:id="@+id/veryHighRadioButton"
-            style="@style/light_level_radio_style" />
-
-    </RadioGroup>
+        app:layout_constraintTop_toBottomOf="@id/viewAreaActivityLightLevelLabel" />
 
     <TextView
         android:id="@+id/viewAreaActivityNumberOfPlantsLabel"
@@ -82,7 +60,7 @@
         android:text="@string/label_NumberOfPlants"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewAreaActivityLightLevelRadioGroup" />
+        app:layout_constraintTop_toBottomOf="@id/viewAreaActivityLightLevelTextView" />
 
     <TextView
         android:id="@+id/viewAreaActivityNumberOfPlantsTextView"

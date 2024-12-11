@@ -128,6 +128,10 @@ public class AppRepository {
         return usernameCount > 0;
     }
 
+    public LiveData<Plant> getPlantByID(int selectedPlantID) {
+        return plantDAO.getPlantByID(selectedPlantID);
+    }
+
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 }
