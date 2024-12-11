@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     AppRepository repository;
     public static final int LOGGED_OUT_USER_ID = -1;
     private static int loggedInUserID = LOGGED_OUT_USER_ID;
-    private User user;
+    private User loggedInUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         repository = AppRepository.getRepository(getApplication());
-        loginUser(savedInstanceState);
 
+        loginUser(savedInstanceState);
         updateSharedPreference();
         // If there is no user logged in, start the login activity
         if (loggedInUserID == LOGGED_OUT_USER_ID) {
@@ -77,13 +77,7 @@ public class MainActivity extends AppCompatActivity {
         return intent;
     }
 
-    public static int getLoggedInUserID() {
-        return loggedInUserID;
-    }
-
-    public static void setLoggedInUserID(int loggedInUserID) {
-        MainActivity.loggedInUserID = loggedInUserID;
-    }
+    // Login functions
 
     private void loginUser(Bundle savedInstanceState) {
         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(getString(R.string.sharedPreferencesFileName), Context.MODE_PRIVATE);
@@ -100,13 +94,13 @@ public class MainActivity extends AppCompatActivity {
         }
         LiveData<User> userObserver = repository.getUserByUserID(loggedInUserID);
         userObserver.observe(this, user -> {
-            this.user = user;
-            // Re-create the menu once user is logged in
+            this.loggedInUser = user;
             if (user != null) {
+
+                // Re-create the menu once user is logged in
                 invalidateOptionsMenu();
-            }
-            // Hide the admin button if the user is not an admin
-            if (user != null) {
+
+                // Hide the admin button if the user is not an admin
                 binding.mainActivityAdminOptionsButton.setVisibility(user.isAdmin() ? View.VISIBLE : View.GONE);
             }
         });
@@ -126,6 +120,8 @@ public class MainActivity extends AppCompatActivity {
         sharedPrefEditor.apply();
     }
 
+    // Menu functions
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.user_menu, menu);
@@ -134,14 +130,14 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        if (loggedInUserID == LOGGED_OUT_USER_ID || user == null) {
+        if (loggedInUserID == LOGGED_OUT_USER_ID || loggedInUser == null) {
             return false;
         }
 
         // Username menu item
         MenuItem usernameItem = menu.findItem(R.id.menuUsernameOption);
         usernameItem.setVisible(true);
-        usernameItem.setTitle(user.getUsername());
+        usernameItem.setTitle(loggedInUser.getUsername());
         usernameItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(@NonNull MenuItem item) {
@@ -156,15 +152,15 @@ public class MainActivity extends AppCompatActivity {
         logoutItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(@NonNull MenuItem item) {
-                showLogoutDialog();
+                showLogoutDialog(MainActivity.this);
                 return false;
             }
         });
         return true;
     }
 
-    private void showLogoutDialog() {
-        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(MainActivity.this);
+    private void showLogoutDialog(Context context) {
+        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(context);
         final AlertDialog alertDialog = alertBuilder.create();
         alertBuilder.setMessage("Log Out?");
         alertBuilder.setPositiveButton("Log Out", new DialogInterface.OnClickListener() {
