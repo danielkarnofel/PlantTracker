@@ -22,6 +22,7 @@ public class AreasActivity extends AppCompatActivity {
     private ActivityAreasBinding binding;
     private int loggedInUserID;
     private AreaViewModel areaViewModel;
+    private static final int NEW_AREA_ID = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,7 @@ public class AreasActivity extends AppCompatActivity {
         binding.areasActivityAddNewAreaButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = EditAreaActivity.editAreaActivityIntentFactory(getApplicationContext());
+                Intent intent = EditAreaActivity.editAreaActivityIntentFactory(getApplicationContext(), NEW_AREA_ID);
                 startActivity(intent);
             }
         });

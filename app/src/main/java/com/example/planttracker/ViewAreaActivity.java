@@ -12,7 +12,9 @@ import com.example.planttracker.databinding.ActivityViewAreaBinding;
 
 public class ViewAreaActivity extends AppCompatActivity {
     private ActivityViewAreaBinding binding;
-    private int loggedInUserID;
+    private int loggedInUserID = MainActivity.LOGGED_OUT_USER_ID;
+    private int selectedAreaID;
+    static final String VIEW_AREA_ACTIVITY_SELECTED_AREA_ID_EXTRA_KEY = "com.example.planttracker.VIEW_AREA_ACTIVITY_SELECTED_AREA_ID_EXTRA_KEY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,27 +26,30 @@ public class ViewAreaActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(getString(R.string.sharedPreferencesFileName), Context.MODE_PRIVATE);
         loggedInUserID = sharedPreferences.getInt(getString(R.string.sharedPreferencesUserIDKey), MainActivity.LOGGED_OUT_USER_ID);
 
+        //TODO: get selectedAreaID from intent extra
+        selectedAreaID = 1;
+
         binding.viewAreaActivityEditButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Clicking the edit button will start the AreaActivity.
-                startActivity(new Intent(ViewAreaActivity.this, EditAreaActivity.class));
+                // Clicking the edit button will start the EditAreaActivity.
+                startActivity(EditAreaActivity.editAreaActivityIntentFactory(getApplicationContext(), selectedAreaID));
             }
         });
 
         // implement onClick for Back button
-        /** Commented out, implemented prior to the implementation of AreasActivityIntentFactory.
         binding.viewAreaActivityBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Clicking the back button will send user back to AreasActivity.
-                startActivity(AreasActivity.AreasActivityIntentFactory(getApplicationContext()));
+                startActivity(AreasActivity.areasActivityIntentFactory(getApplicationContext()));
             }
         });
-        */
     }
-    // Basic ViewAreaIntentFactory
-    static Intent viewAreaActivityIntentFactory(Context context){
-        return new Intent(context, ViewAreaActivity.class);
+
+    public static Intent viewAreaActivityIntentFactory(Context applicationContext, int selectedAreaID){
+        Intent intent = new Intent(applicationContext, ViewAreaActivity.class);
+        intent.putExtra(VIEW_AREA_ACTIVITY_SELECTED_AREA_ID_EXTRA_KEY, selectedAreaID);
+        return intent;
     }
 }
