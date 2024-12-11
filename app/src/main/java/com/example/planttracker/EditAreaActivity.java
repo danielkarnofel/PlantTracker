@@ -9,6 +9,7 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.planttracker.databinding.ActivityEditAreaBinding;
+import com.example.planttracker.utilities.LightLevel;
 
 public class EditAreaActivity extends AppCompatActivity {
     private ActivityEditAreaBinding binding;
@@ -35,6 +36,10 @@ public class EditAreaActivity extends AppCompatActivity {
         binding.editAreaActivitySaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                // TODO: Use this to get the light level from the selected radio button, returns null if nothing selected yet
+                LightLevel selectedLightLevel = LightLevel.getSelectionFromRadioGroup(binding.getRoot(), binding.editAreaActivityLightLevelRadioGroup);
+
                 // Clicking the save button will start the ViewAreaActivity.
                 startActivity(ViewAreaActivity.viewAreaActivityIntentFactory(getApplicationContext(), selectedAreaID));
             }

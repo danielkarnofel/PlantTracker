@@ -5,10 +5,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.planttracker.databinding.ActivityEditPlantBinding;
+import com.example.planttracker.utilities.LightLevel;
 
 public class EditPlantActivity extends AppCompatActivity {
     private ActivityEditPlantBinding binding;
@@ -31,7 +34,12 @@ public class EditPlantActivity extends AppCompatActivity {
         binding.editPlantActivitySaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 // TODO: implement functionality
+
+                // TODO: Use this to get the light level from the selected radio button, returns null if nothing selected yet
+                LightLevel selectedLightLevel = LightLevel.getSelectionFromRadioGroup(binding.getRoot(), binding.editPlantActivityLightLevelNeededRadioGroup);
+
                 // following functionality, the button will return the user to ViewPlantActivity
                 startActivity(ViewPlantActivity.viewPlantActivityIntentFactory(getApplicationContext(), selectedPlantID));
             }

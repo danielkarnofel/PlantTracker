@@ -1,5 +1,9 @@
 package com.example.planttracker.utilities;
 
+import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+
 import androidx.annotation.NonNull;
 
 import com.example.planttracker.R;
@@ -38,6 +42,16 @@ public enum LightLevel {
 
     public int getLightLevelColor() {
         return this.color;
+    }
+
+    public static LightLevel getSelectionFromRadioGroup(View view, RadioGroup radioGroup) {
+        int checkedId = radioGroup.getCheckedRadioButtonId();
+        if (checkedId == -1) {
+            return null;
+        }
+        RadioButton checkedRadioButton = view.findViewById(checkedId);
+        String checkedRadioButtonTag =  (String) checkedRadioButton.getTag();
+        return LightLevel.valueOf(checkedRadioButtonTag);
     }
 
     @Override
