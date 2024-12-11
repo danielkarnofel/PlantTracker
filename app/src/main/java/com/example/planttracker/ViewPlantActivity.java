@@ -31,4 +31,8 @@ public class ViewPlantActivity extends AppCompatActivity {
     }
 
     // TODO: implement basic intent factory
+    static Intent viewPlantActivityIntentFactory(Context context){
+        return new Intent(context, ViewPlantActivity.class);
+    }
+
 }
