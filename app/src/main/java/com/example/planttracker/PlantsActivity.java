@@ -21,6 +21,7 @@ public class PlantsActivity extends AppCompatActivity {
     private ActivityPlantsBinding binding;
     private int loggedInUserID;
     private PlantViewModel plantViewModel;
+    private static final int NEW_PLANT_ID = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +47,7 @@ public class PlantsActivity extends AppCompatActivity {
         binding.plantsActivityAddNewPlantButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = EditPlantActivity.editPlantActivityIntentFactory(getApplicationContext(), true);
+                Intent intent = EditPlantActivity.editPlantActivityIntentFactory(getApplicationContext(), NEW_PLANT_ID);
                 startActivity(intent);
             }
         });
