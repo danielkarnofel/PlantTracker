@@ -7,6 +7,9 @@
     <dimen name="standard_height">60dp</dimen>
     <dimen name="large_height">320dp</dimen>
 
+    <dimen name="recycler_item_width">300dp</dimen>
+    <dimen name="recycler_view_padding">150dp</dimen>
+
     <!--Margin-->
     <dimen name="large_gap">20dp</dimen>
     <dimen name="small_gap">10dp</dimen>

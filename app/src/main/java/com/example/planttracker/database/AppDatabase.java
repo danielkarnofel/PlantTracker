@@ -61,8 +61,9 @@ public abstract class AppDatabase extends RoomDatabase {
 
             // TODO: Remove this once Add New Plant function is working
             // Create default plant (for testing only)
-            Plant testPlant1 = new Plant(1, 1, "Mr. Leaves", "Fern", LightLevel.MEDIUM, 5, LocalDateTime.now());
-            Plant testPlant2 = new Plant(1, 2, "Leaf Erikson", "Shrub", LightLevel.HIGH, 7, LocalDateTime.now());
+            Plant testPlant1 = new Plant(1, 1, "Mr. Leaves", "Fern", LightLevel.LOW, 3, LocalDateTime.now());
+            Plant testPlant2 = new Plant(1, 2, "Leaf Erikson", "Shrub", LightLevel.MEDIUM, 7, LocalDateTime.now());
+            Plant testPlant3 = new Plant(1, 2, "Cooler Cactus", "Succulent", LightLevel.HIGH, 14, LocalDateTime.now());
 
             // Clear the user table and insert all default users:
             databaseWriteExecutor.execute(() -> {
@@ -71,7 +72,7 @@ public abstract class AppDatabase extends RoomDatabase {
                 userDAO.insert(testAdmin1, testUser1, testUser2);
 
                 PlantDAO plantDAO = INSTANCE.plantDAO();
-                plantDAO.insert(testPlant1, testPlant2);
+                plantDAO.insert(testPlant1, testPlant2, testPlant3);
             });
         }
     };
