@@ -35,7 +35,7 @@ public class PlantsActivity extends AppCompatActivity {
         // Set up Plant recycler view
         plantViewModel = new ViewModelProvider(this).get(PlantViewModel.class);
         RecyclerView recyclerView = binding.plantsActivityRecyclerView;
-        final PlantAdapter adapter = new PlantAdapter(new PlantAdapter.GymLogDiff());
+        final PlantAdapter adapter = new PlantAdapter(new PlantAdapter.PlantDiff());
         recyclerView.setAdapter(adapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);

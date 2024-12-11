@@ -63,6 +63,10 @@ public class AppRepository {
             areaDAO.delete(area);
         });
     }
+
+    public LiveData<List<Area>> getAllAreasByUserID(int userID) {
+        return areaDAO.getAllAreasByUserID(userID);
+    }
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     // Plant methods
@@ -123,7 +127,6 @@ public class AppRepository {
 
         return usernameCount > 0;
     }
-
 
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
