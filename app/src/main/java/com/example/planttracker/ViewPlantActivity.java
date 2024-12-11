@@ -26,7 +26,13 @@ public class ViewPlantActivity extends AppCompatActivity {
 
         // TODO: implement onClick for Water Plant button
 
-        // TODO: implement onClick for Edit button
+        // implement onClick for Edit button
+        binding.viewPlantActivityEditButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ViewPlantActivity.this, EditPlantActivity.class));
+            }
+        });
 
         // implement onClick for Back button
         binding.viewPlantActivityBackButton.setOnClickListener(new View.OnClickListener() {
