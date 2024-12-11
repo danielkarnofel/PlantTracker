@@ -1,11 +1,14 @@
 package com.example.planttracker.viewHolders;
 
+import android.content.Intent;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 
+import com.example.planttracker.ViewAreaActivity;
 import com.example.planttracker.database.entities.Area;
 
 public class AreaAdapter extends ListAdapter<Area, AreaViewHolder> {
@@ -23,6 +26,14 @@ public class AreaAdapter extends ListAdapter<Area, AreaViewHolder> {
     public void onBindViewHolder(@NonNull AreaViewHolder holder, int position) {
         Area current = getItem(position);
         holder.bind(current);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = ViewAreaActivity.viewAreaActivityIntentFactory(holder.itemView.getContext(), current.getAreaID());
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
     }
 
     public static class AreaDiff extends DiffUtil.ItemCallback<Area> {
