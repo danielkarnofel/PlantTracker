@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,10 +28,16 @@ public class ViewPlantActivity extends AppCompatActivity {
 
         // TODO: implement onClick for Edit button
 
-        // TODO: implement onClick for Back button
+        // implement onClick for Back button
+        binding.viewPlantActivityBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(PlantsActivity.plantsActivityIntentFactory(getApplicationContext()));
+            }
+        });
     }
 
-    // TODO: implement basic intent factory
+    // implement basic intent factory
     static Intent viewPlantActivityIntentFactory(Context context){
         return new Intent(context, ViewPlantActivity.class);
     }
