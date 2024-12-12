@@ -61,7 +61,12 @@ public class ViewAreaActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Clicking the edit button will start the EditAreaActivity.
-                startActivity(EditAreaActivity.editAreaActivityIntentFactory(getApplicationContext(), selectedAreaID));
+                //boolean isNewArea = false;
+                // Extra value being passed in to indicate it is being edited, not a new area.
+                Intent editIntent = EditAreaActivity.editAreaActivityIntentFactory(getApplicationContext(), selectedAreaID);
+                editIntent.putExtra("IS_NEW_AREA", false);
+                startActivity(editIntent);
+                //startActivity(EditAreaActivity.editAreaActivityIntentFactory(getApplicationContext(), selectedAreaID));
 
             }
         });
