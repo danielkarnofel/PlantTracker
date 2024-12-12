@@ -24,7 +24,6 @@ public class ViewPlantActivity extends AppCompatActivity {
     private int selectedPlantID;
     static final String VIEW_PLANT_ACTIVITY_SELECTED_PLANT_ID_EXTRA_KEY = "com.example.planttracker.VIEW_PLANT_ACTIVITY_SELECTED_PLANT_ID_EXTRA_KEY";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,11 +47,12 @@ public class ViewPlantActivity extends AppCompatActivity {
 
         // TODO: implement onClick for Water Plant button
 
+        selectedPlantID = 1;
         // implement onClick for Edit button
         binding.viewPlantActivityEditButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ViewPlantActivity.this, EditPlantActivity.class));
+                startActivity(EditPlantActivity.editPlantActivityIntentFactory(getApplicationContext(), selectedPlantID));
             }
         });
 
