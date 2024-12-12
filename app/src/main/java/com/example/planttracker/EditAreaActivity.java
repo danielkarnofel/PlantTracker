@@ -7,15 +7,19 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
 
 import com.example.planttracker.database.AppRepository;
+import com.example.planttracker.database.entities.Area;
 import com.example.planttracker.database.entities.User;
 import com.example.planttracker.databinding.ActivityEditAreaBinding;
 import com.example.planttracker.utilities.LightLevel;
+
+import java.util.Objects;
 
 public class EditAreaActivity extends AppCompatActivity {
     private ActivityEditAreaBinding binding;
@@ -23,9 +27,14 @@ public class EditAreaActivity extends AppCompatActivity {
     private int loggedInUserID;
     private User loggedInUser;
     private AppRepository repository;
-    private int selectedAreaID;
+    /// Can be deleted later, default values if not area is selected.
+    private final int NO_AREA_SELECTED = -1;
+    private int selectedAreaID = NO_AREA_SELECTED;
 
     // TODO: add a boolean that indicates whether a new area is being created, or an existing area is being edited
+    private final boolean IS_NEW= true;
+    private boolean isNewArea = IS_NEW;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +58,13 @@ public class EditAreaActivity extends AppCompatActivity {
         });
 
         // TODO: get selectedAreaID extra from intent
-        selectedAreaID = 1;
+        selectedAreaID = getIntent().getIntExtra(EDIT_AREA_ACTIVITY_SELECTED_AREA_ID_EXTRA_KEY,NO_AREA_SELECTED);
+        /// Getting passed in extra from onClick of ViewAreaActivity. Will set isNewArea to false.
+        /// Key IS_NEW_AREA paired to boolean value false in ViewAreaActivity.
+        Bundle extra = getIntent().getExtras();
+        if (extra != null){
+            isNewArea = extra.getBoolean("IS_NEW_AREA");
+        }
 
         // TODO: save the user inputs to the selected Area
         binding.editAreaActivitySaveButton.setOnClickListener(new View.OnClickListener() {
@@ -58,12 +73,17 @@ public class EditAreaActivity extends AppCompatActivity {
 
                 // TODO: Use this to get the light level from the selected radio button, returns null if nothing selected yet
                 LightLevel selectedLightLevel = LightLevel.getSelectionFromRadioGroup(binding.getRoot(), binding.editAreaActivityLightLevelRadioGroup);
-
-                // Clicking the save button will start the ViewAreaActivity.
+                EditText areaText = findViewById(R.id.editAreaActivityNameEditText);
+                String inputAreaName = areaText.getText().toString();
+                if ((selectedLightLevel != null) && !inputAreaName.isEmpty() && isNewArea){
+                    // Zero plants in this area as it is a new area?
+                    Area area = new Area(loggedInUserID, inputAreaName, 0, selectedLightLevel);
+                    selectedAreaID = area.getAreaID();
+                    repository.insertArea(area);
+                }
                 startActivity(ViewAreaActivity.viewAreaActivityIntentFactory(getApplicationContext(), selectedAreaID));
             }
         });
-
         // TODO: If creating a new area, should return to AreasActivity, if editing an existing area,
         //  should return to ViewAreaActivity and pass the selectedAreaID as an extra
         binding.editAreaActivityCancelButton.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +99,8 @@ public class EditAreaActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Clicking the delete button will send user back to AreasActivity.
+                /// Not sure if this is correct. To delete area from repository.
+                repository.deleteArea(repository.getAreaByID(selectedAreaID).getValue());
                 startActivity(AreasActivity.areasActivityIntentFactory(getApplicationContext()));
             }
         });
