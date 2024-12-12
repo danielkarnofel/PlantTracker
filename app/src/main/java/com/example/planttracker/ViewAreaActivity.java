@@ -46,7 +46,6 @@ public class ViewAreaActivity extends AppCompatActivity {
         // Get userID from shared preferences
         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(getString(R.string.sharedPreferencesFileName), Context.MODE_PRIVATE);
         loggedInUserID = sharedPreferences.getInt(getString(R.string.sharedPreferencesUserIDKey), MainActivity.LOGGED_OUT_USER_ID);
-
         // Pull user info from database
         LiveData<User> userObserver = repository.getUserByUserID(loggedInUserID);
         userObserver.observe(this, user -> {
@@ -56,12 +55,14 @@ public class ViewAreaActivity extends AppCompatActivity {
             }
         });
         // Update the display depending on the Area ID
+        selectedAreaID = getIntent().getIntExtra(VIEW_AREA_ACTIVITY_SELECTED_AREA_ID_EXTRA_KEY,NO_AREA_SELECTED);
         updateDisplay();
         binding.viewAreaActivityEditButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Clicking the edit button will start the EditAreaActivity.
                 startActivity(EditAreaActivity.editAreaActivityIntentFactory(getApplicationContext(), selectedAreaID));
+
             }
         });
 
@@ -90,7 +91,10 @@ public class ViewAreaActivity extends AppCompatActivity {
             /// Getting the values of the selected area. No sure if doing it right.
             LiveData<Area> selectedArea = repository.getAreaByID(selectedAreaID);
             Area currentArea = selectedArea.getValue();
-            assert currentArea != null;
+            //assert currentArea != null;
+            if (currentArea == null){
+                return;
+            }
             String areaName = currentArea.getName();
             LightLevel areaLight = currentArea.getLightLevel();
             LightLevelTypeConverter lightToIntConverter = new LightLevelTypeConverter();
