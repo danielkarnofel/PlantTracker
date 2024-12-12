@@ -71,6 +71,15 @@ public class EditPlantActivity extends AppCompatActivity {
                 // TODO: Use this to get the light level from the selected radio button, returns null if nothing selected yet
                 LightLevel selectedLightLevel = LightLevel.getSelectionFromRadioGroup(binding.getRoot(), binding.editPlantActivityLightLevelNeededRadioGroup);
 
+                if(plantInfoComplete(mPlantName,mPlantType,selectedLightLevel)){
+                    if(selectedPlantID == -1){
+                        repository.insertPlant();
+                    }
+                    else{
+                        repository.updatePlant(selectedPlant);
+                    }
+                }
+
                 // following functionality, the button will return the user to ViewPlantActivity
                 startActivity(ViewPlantActivity.viewPlantActivityIntentFactory(getApplicationContext(), selectedPlantID));
             }
