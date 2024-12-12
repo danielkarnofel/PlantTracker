@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.planttracker.database.AppRepository;
 import com.example.planttracker.database.entities.User;
 import com.example.planttracker.databinding.ActivitySignUpBinding;
+import com.example.planttracker.utilities.ToastMaker;
 
 public class SignUpActivity extends AppCompatActivity {
     private ActivitySignUpBinding binding;
@@ -23,6 +24,11 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // Hide action bar
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
         repository = AppRepository.getRepository(getApplication());
 
@@ -36,7 +42,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                 if (signupInformationComplete(mUsername, mPassword1, mPassword2)) {
                     if (repository.checkUsernameExists(mUsername)) {
-                        toastMaker("Username already exists.");
+                        ToastMaker.makeToast(getApplicationContext(), "Username already exists.");
                     } else {
                         repository.insertUser(new User(mUsername, mPassword1, false));
                         showSuccessDialog();
@@ -56,25 +62,25 @@ public class SignUpActivity extends AppCompatActivity {
 
     private boolean signupInformationComplete(String username, String password1, String password2) {
         if (username.isEmpty()) {
-            toastMaker("Missing username!");
+            ToastMaker.makeToast(this, "Missing username!");
             binding.signUpActivityUsernameEditText.setSelection(0);
             return false;
         }
 
         if (password1.isEmpty()) {
-            toastMaker("Missing password!");
+            ToastMaker.makeToast(this, "Missing password!");
             binding.signUpActivityPasswordEditText.setSelection(0);
             return false;
         }
 
         if (password2.isEmpty()) {
-            toastMaker("Missing password confirmation!");
+            ToastMaker.makeToast(this, "Missing password confirmation!");
             binding.signUpActivityConfirmEditText.setSelection(0);
             return false;
         }
 
         if (!password1.equals(password2)) {
-            toastMaker("Passwords does not match!");
+            ToastMaker.makeToast(this, "Passwords does not match!");
             binding.signUpActivityPasswordEditText.setSelection(0);
             return false;
         }
@@ -84,7 +90,6 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void showSuccessDialog() {
         AlertDialog.Builder alertBuilder = new AlertDialog.Builder(SignUpActivity.this);
-
         alertBuilder.setTitle("Success");
         alertBuilder.setMessage("Your account was successfully created.");
         alertBuilder.setCancelable(false);
@@ -95,12 +100,7 @@ public class SignUpActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         alertBuilder.create().show();
-    }
-
-    private void toastMaker(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     public static Intent signupActivityIntentFactory(Context applicationContext) {

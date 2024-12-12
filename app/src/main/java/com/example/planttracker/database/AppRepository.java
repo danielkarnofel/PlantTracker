@@ -67,6 +67,10 @@ public class AppRepository {
     public LiveData<List<Area>> getAllAreasByUserID(int userID) {
         return areaDAO.getAllAreasByUserID(userID);
     }
+
+    public LiveData<Area> getAreaByID(int selectedAreaID) {
+        return areaDAO.getAreaByID(selectedAreaID);
+    }
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     // Plant methods
@@ -85,6 +89,10 @@ public class AppRepository {
 
     public LiveData<List<Plant>> getAllPlantsByUserID(int userID) {
         return plantDAO.getAllPlantsByUserID(userID);
+    }
+
+    public LiveData<Plant> getPlantByID(int selectedPlantID) {
+        return plantDAO.getPlantByID(selectedPlantID);
     }
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -118,7 +126,6 @@ public class AppRepository {
                 return usernameCount;
             }
         });
-
         try {
             future.get();
         } catch (InterruptedException | ExecutionException e) {
@@ -127,14 +134,5 @@ public class AppRepository {
 
         return usernameCount > 0;
     }
-
-    public LiveData<Plant> getPlantByID(int selectedPlantID) {
-        return plantDAO.getPlantByID(selectedPlantID);
-    }
-    public LiveData<Area> getAreaByID(int selectedAreaId) {
-        return areaDAO.getAreaById(selectedAreaId);
-    }
-
-
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 }

@@ -49,6 +49,13 @@ public class EditPlantActivity extends AppCompatActivity {
             }
         });
 
+        // get selectedPlantID from extra
+
+        // if -1, selectedPlant = new Plant
+        // else, get selectedPlant from database with getPlantByID
+
+
+
 
         // TODO: implement onClick for Save button
         binding.editPlantActivitySaveButton.setOnClickListener(new View.OnClickListener() {

@@ -8,7 +8,7 @@ import com.example.planttracker.database.AppDatabase;
 
 import java.util.Objects;
 
-@Entity(tableName = AppDatabase.USER_TABLE) //The name of this table.
+@Entity(tableName = AppDatabase.USER_TABLE)
 public class User {
     @PrimaryKey(autoGenerate = true)
     private int userID;
