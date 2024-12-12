@@ -50,5 +50,6 @@
     <string name="menu_LogOut">Log Out</string>
     <string name="sharedPreferencesFileName">plantTrackerSharedPreferences</string>
     <string name="sharedPreferencesUserIDKey">plantTrackerSharedPreferenceUserID</string>
+    <string name="no_area_selected">"No area selected. "</string>
 
 </resources>

@@ -131,6 +131,9 @@ public class AppRepository {
     public LiveData<Plant> getPlantByID(int selectedPlantID) {
         return plantDAO.getPlantByID(selectedPlantID);
     }
+    public LiveData<Area> getAreaByID(int selectedAreaId) {
+        return areaDAO.getAreaById(selectedAreaId);
+    }
 
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
