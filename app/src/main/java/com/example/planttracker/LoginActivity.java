@@ -12,6 +12,7 @@ import androidx.lifecycle.LiveData;
 import com.example.planttracker.database.AppRepository;
 import com.example.planttracker.database.entities.User;
 import com.example.planttracker.databinding.ActivityLoginBinding;
+import com.example.planttracker.utilities.IntentFactory;
 import com.example.planttracker.utilities.ToastMaker;
 
 public class LoginActivity extends AppCompatActivity {
@@ -41,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         binding.loginActivityCreateAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(SignUpActivity.signupActivityIntentFactory(getApplicationContext()));
+                startActivity(IntentFactory.signupActivityIntentFactory(getApplicationContext()));
             }
         });
     }
@@ -71,11 +72,7 @@ public class LoginActivity extends AppCompatActivity {
                 binding.loginActivityPasswordEditText.setSelection(0);
                 return;
             }
-            startActivity(MainActivity.mainActivityIntentFactory(getApplicationContext(), user.getUserID()));
+            startActivity(IntentFactory.mainActivityIntentFactory(getApplicationContext(), user.getUserID()));
         });
-    }
-
-    public static Intent loginActivityIntentFactory(Context applicationContext) {
-        return new Intent(applicationContext, LoginActivity.class);
     }
 }

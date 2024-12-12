@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.planttracker.database.AppRepository;
 import com.example.planttracker.database.entities.User;
 import com.example.planttracker.databinding.ActivitySignUpBinding;
+import com.example.planttracker.utilities.IntentFactory;
 import com.example.planttracker.utilities.ToastMaker;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -54,7 +55,7 @@ public class SignUpActivity extends AppCompatActivity {
         binding.signUpActivityCancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = LoginActivity.loginActivityIntentFactory(getApplicationContext());
+                Intent intent = IntentFactory.loginActivityIntentFactory(getApplicationContext());
                 startActivity(intent);
             }
         });
@@ -96,14 +97,10 @@ public class SignUpActivity extends AppCompatActivity {
         alertBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                Intent intent = LoginActivity.loginActivityIntentFactory(getApplicationContext());
+                Intent intent = IntentFactory.loginActivityIntentFactory(getApplicationContext());
                 startActivity(intent);
             }
         });
         alertBuilder.create().show();
-    }
-
-    public static Intent signupActivityIntentFactory(Context applicationContext) {
-        return new Intent(applicationContext, SignUpActivity.class);
     }
 }

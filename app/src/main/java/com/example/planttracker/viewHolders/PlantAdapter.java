@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.ListAdapter;
 import com.example.planttracker.ViewAreaActivity;
 import com.example.planttracker.ViewPlantActivity;
 import com.example.planttracker.database.entities.Plant;
+import com.example.planttracker.utilities.IntentFactory;
 
 public class PlantAdapter extends ListAdapter<Plant, PlantViewHolder> {
     public PlantAdapter(@NonNull DiffUtil.ItemCallback<Plant> diffCallback) {
@@ -31,7 +32,7 @@ public class PlantAdapter extends ListAdapter<Plant, PlantViewHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = ViewPlantActivity.viewPlantActivityIntentFactory(holder.itemView.getContext(), current.getPlantID());
+                Intent intent = IntentFactory.viewPlantActivityIntentFactory(holder.itemView.getContext(), current.getPlantID());
                 holder.itemView.getContext().startActivity(intent);
             }
         });
