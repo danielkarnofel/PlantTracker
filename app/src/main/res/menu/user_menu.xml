@@ -2,8 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/menuUsernameOption"
-        android:title="@string/menu_User"
+        android:id="@+id/menuUsername"
+        android:title="@string/menu_Username"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/menuHomeOption"
+        android:title="@string/menu_Home"
         app:showAsAction="ifRoom" />
 
     <item

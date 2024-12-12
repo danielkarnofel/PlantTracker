@@ -46,7 +46,8 @@
 
     <!-- Other -->
     <string name="no_data">No data</string>
-    <string name="menu_User">User</string>
+    <string name="menu_Username">Username</string>
+    <string name="menu_Home">Home</string>
     <string name="menu_LogOut">Log Out</string>
     <string name="sharedPreferencesFileName">plantTrackerSharedPreferences</string>
     <string name="sharedPreferencesUserIDKey">plantTrackerSharedPreferenceUserID</string>

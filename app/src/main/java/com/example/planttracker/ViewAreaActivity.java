@@ -19,13 +19,11 @@ import com.example.planttracker.database.entities.Area;
 import com.example.planttracker.database.entities.User;
 import com.example.planttracker.database.typeConverters.LightLevelTypeConverter;
 import com.example.planttracker.databinding.ActivityViewAreaBinding;
+import com.example.planttracker.utilities.IntentFactory;
 import com.example.planttracker.utilities.LightLevel;
 
-public class ViewAreaActivity extends AppCompatActivity {
+public class ViewAreaActivity extends BaseActivity {
     private ActivityViewAreaBinding binding;
-    private int loggedInUserID = MainActivity.LOGGED_OUT_USER_ID;
-    private User loggedInUser;
-    private AppRepository repository;
 
     //TODO: get selectedAreaID from intent extra
     // default value for selected slectedAreaID
@@ -33,7 +31,6 @@ public class ViewAreaActivity extends AppCompatActivity {
     // Set selectedAreaID to default value. Im 80% sure this is overridden with the intent factory.
     // Will need reworking if not the case.
     private int selectedAreaID = NO_AREA_SELECTED;
-    static final String VIEW_AREA_ACTIVITY_SELECTED_AREA_ID_EXTRA_KEY = "com.example.planttracker.VIEW_AREA_ACTIVITY_SELECTED_AREA_ID_EXTRA_KEY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,27 +38,14 @@ public class ViewAreaActivity extends AppCompatActivity {
         binding = ActivityViewAreaBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        repository = AppRepository.getRepository(getApplication());
-
-        // Get userID from shared preferences
-        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences(getString(R.string.sharedPreferencesFileName), Context.MODE_PRIVATE);
-        loggedInUserID = sharedPreferences.getInt(getString(R.string.sharedPreferencesUserIDKey), MainActivity.LOGGED_OUT_USER_ID);
-        // Pull user info from database
-        LiveData<User> userObserver = repository.getUserByUserID(loggedInUserID);
-        userObserver.observe(this, user -> {
-            this.loggedInUser = user;
-            if (user != null) {
-                invalidateOptionsMenu();
-            }
-        });
         // Update the display depending on the Area ID
-        selectedAreaID = getIntent().getIntExtra(VIEW_AREA_ACTIVITY_SELECTED_AREA_ID_EXTRA_KEY,NO_AREA_SELECTED);
+        selectedAreaID = getIntent().getIntExtra(IntentFactory.VIEW_AREA_ACTIVITY_SELECTED_AREA_ID_EXTRA_KEY,NO_AREA_SELECTED);
         updateDisplay();
         binding.viewAreaActivityEditButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Clicking the edit button will start the EditAreaActivity.
-                startActivity(EditAreaActivity.editAreaActivityIntentFactory(getApplicationContext(), selectedAreaID));
+                startActivity(IntentFactory.editAreaActivityIntentFactory(getApplicationContext(), selectedAreaID));
 
             }
         });
@@ -71,7 +55,7 @@ public class ViewAreaActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Clicking the back button will send user back to AreasActivity.
-                startActivity(AreasActivity.areasActivityIntentFactory(getApplicationContext()));
+                startActivity(IntentFactory.areasActivityIntentFactory(getApplicationContext()));
             }
         });
     }
@@ -108,42 +92,5 @@ public class ViewAreaActivity extends AppCompatActivity {
         }
 
     }
-    public static Intent viewAreaActivityIntentFactory(Context applicationContext, int selectedAreaID){
-        Intent intent = new Intent(applicationContext, ViewAreaActivity.class);
-        intent.putExtra(VIEW_AREA_ACTIVITY_SELECTED_AREA_ID_EXTRA_KEY, selectedAreaID);
-        return intent;
-    }
 
-    // Menu functions
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.user_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
-        if (loggedInUserID == MainActivity.LOGGED_OUT_USER_ID || loggedInUser == null) {
-            return false;
-        }
-
-        // Username menu item
-        MenuItem usernameItem = menu.findItem(R.id.menuUsernameOption);
-        usernameItem.setVisible(true);
-        usernameItem.setTitle(loggedInUser.getUsername());
-        usernameItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(@NonNull MenuItem item) {
-                startActivity(MainActivity.mainActivityIntentFactory(getApplicationContext(), loggedInUserID));
-                return false;
-            }
-        });
-
-        // hide Log Out menu item
-        MenuItem logoutItem = menu.findItem(R.id.menuLogoutOption);
-        logoutItem.setVisible(false);
-
-        return true;
-    }
 }

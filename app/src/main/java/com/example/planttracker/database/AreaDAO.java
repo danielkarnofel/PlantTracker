@@ -8,7 +8,6 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 import com.example.planttracker.database.entities.Area;
-import com.example.planttracker.database.entities.Plant;
 
 import java.util.List;
 
@@ -28,6 +27,6 @@ public interface AreaDAO {
     @Query("SELECT * FROM " + AppDatabase.AREA_TABLE + " WHERE userID = :userID")
     LiveData<List<Area>> getAllAreasByUserID(int userID);
 
-    @Query("SELECT * FROM " + AppDatabase.AREA_TABLE + " WHERE areaID = :selectedAreaId")
-    LiveData<Area> getAreaById(int selectedAreaId);
+    @Query("SELECT * FROM " + AppDatabase.AREA_TABLE + " WHERE areaID = :selectedAreaID")
+    LiveData<Area> getAreaByID(int selectedAreaID);
 }

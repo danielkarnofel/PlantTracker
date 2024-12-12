@@ -21,6 +21,7 @@ import com.example.planttracker.utilities.LightLevel;
 import java.time.LocalDateTime;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
 @TypeConverters({LightLevelTypeConverter.class, LocalDateTimeTypeConverter.class})
 @Database(entities = {Plant.class, Area.class, User.class}, version = 1, exportSchema = false)
 public abstract class AppDatabase extends RoomDatabase {
@@ -35,7 +36,7 @@ public abstract class AppDatabase extends RoomDatabase {
     static AppDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
             synchronized (AppDatabase.class) {
-                if (INSTANCE == null){
+                if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(
                                     context.getApplicationContext(),
                                     AppDatabase.class, DATABASE_NAME)
@@ -57,7 +58,6 @@ public abstract class AppDatabase extends RoomDatabase {
             // Create default users:
             User testAdmin1 = new User("admin1", "admin1", true);
             User testUser1 = new User("testUser1", "testUser1");
-            User testUser2 = new User("testUser2", "testUser2");
 
             // TODO: Remove this once Add New Plant function is working
             // Create default plants (for testing only)
@@ -75,7 +75,7 @@ public abstract class AppDatabase extends RoomDatabase {
             databaseWriteExecutor.execute(() -> {
                 UserDAO userDAO = INSTANCE.userDAO();
                 userDAO.deleteAll();
-                userDAO.insert(testAdmin1, testUser1, testUser2);
+                userDAO.insert(testAdmin1, testUser1);
 
                 PlantDAO plantDAO = INSTANCE.plantDAO();
                 plantDAO.deleteAll();
@@ -89,6 +89,8 @@ public abstract class AppDatabase extends RoomDatabase {
     };
 
     public abstract AreaDAO areaDAO();
+
     public abstract PlantDAO plantDAO();
+
     public abstract UserDAO userDAO();
 }

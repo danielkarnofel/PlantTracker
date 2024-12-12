@@ -1,7 +1,6 @@
 package com.example.planttracker.database.entities;
 
 import androidx.room.Entity;
-import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 import com.example.planttracker.database.AppDatabase;

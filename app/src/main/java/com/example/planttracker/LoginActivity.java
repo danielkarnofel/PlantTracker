@@ -12,6 +12,8 @@ import androidx.lifecycle.LiveData;
 import com.example.planttracker.database.AppRepository;
 import com.example.planttracker.database.entities.User;
 import com.example.planttracker.databinding.ActivityLoginBinding;
+import com.example.planttracker.utilities.IntentFactory;
+import com.example.planttracker.utilities.ToastMaker;
 
 public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
@@ -22,6 +24,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // Hide action bar
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
         repository = AppRepository.getRepository(getApplication());
 
@@ -35,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         binding.loginActivityCreateAccountButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(SignUpActivity.signupActivityIntentFactory(getApplicationContext()));
+                startActivity(IntentFactory.signupActivityIntentFactory(getApplicationContext()));
             }
         });
     }
@@ -45,35 +52,27 @@ public class LoginActivity extends AppCompatActivity {
         String password = binding.loginActivityPasswordEditText.getText().toString();
 
         if (username.isEmpty()) {
-            toastMaker("Username cannot be empty.");
+            ToastMaker.makeToast(this, "Username cannot be empty.");
             return;
         }
         if (password.isEmpty()) {
-            toastMaker("Username cannot be empty.");
+            ToastMaker.makeToast(this, "Password cannot be empty.");
             return;
         }
 
         LiveData<User> userObserver = repository.getUserByUsername(username);
         userObserver.observe(this, user -> {
             if (user == null) {
-                toastMaker("Invalid username");
+                ToastMaker.makeToast(this, "Invalid username");
                 binding.loginActivityUsernameEditText.setSelection(0);
                 return;
             }
             if (!password.equals(user.getPassword())) {
-                toastMaker("Invalid password");
+                ToastMaker.makeToast(this, "Invalid password");
                 binding.loginActivityPasswordEditText.setSelection(0);
                 return;
             }
-            startActivity(MainActivity.mainActivityIntentFactory(getApplicationContext(), user.getUserID()));
+            startActivity(IntentFactory.mainActivityIntentFactory(getApplicationContext(), user.getUserID()));
         });
-    }
-
-    private void toastMaker(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
-
-    public static Intent loginActivityIntentFactory(Context applicationContext) {
-        return new Intent(applicationContext, LoginActivity.class);
     }
 }

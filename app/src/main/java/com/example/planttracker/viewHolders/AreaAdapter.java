@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.ListAdapter;
 
 import com.example.planttracker.ViewAreaActivity;
 import com.example.planttracker.database.entities.Area;
+import com.example.planttracker.utilities.IntentFactory;
 
 public class AreaAdapter extends ListAdapter<Area, AreaViewHolder> {
     public AreaAdapter(@NonNull DiffUtil.ItemCallback<Area> diffCallback) {
@@ -30,7 +31,7 @@ public class AreaAdapter extends ListAdapter<Area, AreaViewHolder> {
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = ViewAreaActivity.viewAreaActivityIntentFactory(holder.itemView.getContext(), current.getAreaID());
+                Intent intent = IntentFactory.viewAreaActivityIntentFactory(holder.itemView.getContext(), current.getAreaID());
                 holder.itemView.getContext().startActivity(intent);
             }
         });
