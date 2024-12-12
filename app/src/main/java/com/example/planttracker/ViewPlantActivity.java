@@ -13,8 +13,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
 
 import com.example.planttracker.database.AppRepository;
+import com.example.planttracker.database.entities.Plant;
 import com.example.planttracker.database.entities.User;
 import com.example.planttracker.databinding.ActivityViewPlantBinding;
+
+import java.time.LocalDateTime;
 
 public class ViewPlantActivity extends AppCompatActivity {
     private ActivityViewPlantBinding binding;
@@ -22,8 +25,8 @@ public class ViewPlantActivity extends AppCompatActivity {
     private User loggedInUser;
     private AppRepository repository;
     private int selectedPlantID;
+    public Plant selectedPlant;
     static final String VIEW_PLANT_ACTIVITY_SELECTED_PLANT_ID_EXTRA_KEY = "com.example.planttracker.VIEW_PLANT_ACTIVITY_SELECTED_PLANT_ID_EXTRA_KEY";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +49,27 @@ public class ViewPlantActivity extends AppCompatActivity {
             }
         });
 
+        LiveData<Plant> plantObserver = repository.getPlantByID(selectedPlantID);
+        plantObserver.observe(this, plant -> {
+            this.selectedPlant = plant;
+            if (plant != null) {
+                invalidateOptionsMenu();
+            }
+        });
+
         // TODO: implement onClick for Water Plant button
+        binding.viewPlantActivityWaterPlantButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectedPlant.setLastWatered(LocalDateTime.now());
+            }
+        });
 
         // implement onClick for Edit button
         binding.viewPlantActivityEditButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ViewPlantActivity.this, EditPlantActivity.class));
+                startActivity(EditPlantActivity.editPlantActivityIntentFactory(getApplicationContext(), selectedPlantID));
             }
         });
 
