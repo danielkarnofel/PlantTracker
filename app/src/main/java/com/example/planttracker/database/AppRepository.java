@@ -77,6 +77,12 @@ public class AppRepository {
         });
     }
 
+    public void updatePlant(Plant plant) {
+        AppDatabase.databaseWriteExecutor.execute(() -> {
+            plantDAO.update(plant);
+        });
+    }
+
     public void deletePlant(Plant plant) {
         AppDatabase.databaseWriteExecutor.execute(() -> {
             plantDAO.delete(plant);

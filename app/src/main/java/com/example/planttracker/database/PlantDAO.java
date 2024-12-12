@@ -6,6 +6,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.planttracker.database.entities.Plant;
 
@@ -16,6 +17,9 @@ public interface PlantDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Plant... plant);
+
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    void update(Plant plant);
 
     @Delete
     void delete(Plant plant);

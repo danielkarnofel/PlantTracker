@@ -9,12 +9,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
 
 import com.example.planttracker.database.AppRepository;
+import com.example.planttracker.database.entities.Plant;
 import com.example.planttracker.database.entities.User;
 import com.example.planttracker.databinding.ActivityEditPlantBinding;
 import com.example.planttracker.utilities.LightLevel;
@@ -25,6 +27,7 @@ public class EditPlantActivity extends AppCompatActivity {
     private User loggedInUser;
     private AppRepository repository;
     private int selectedPlantID;
+    private Plant selectedPlant;
     static final String EDIT_PLANT_ACTIVITY_SELECTED_PLANT_ID_EXTRA_KEY = "com.example.planttracker.EDIT_PLANT_ACTIVITY_SELECTED_PLANT_ID_EXTRA_KEY";
 
 
@@ -49,6 +52,13 @@ public class EditPlantActivity extends AppCompatActivity {
             }
         });
 
+        LiveData<Plant> plantObserver = repository.getPlantByID(selectedPlantID);
+        plantObserver.observe(this, plant -> {
+            this.selectedPlant = plant;
+            if (plant != null) {
+                invalidateOptionsMenu();
+            }
+        });
 
         // TODO: implement onClick for Save button
         binding.editPlantActivitySaveButton.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +66,8 @@ public class EditPlantActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 // TODO: implement functionality
-
+                String mPlantName = binding.editPlantActivityNameEditText.getText().toString();
+                String mPlantType = binding.editPlantActivityPlantTypeEditText.getText().toString();
                 // TODO: Use this to get the light level from the selected radio button, returns null if nothing selected yet
                 LightLevel selectedLightLevel = LightLevel.getSelectionFromRadioGroup(binding.getRoot(), binding.editPlantActivityLightLevelNeededRadioGroup);
 
@@ -92,6 +103,22 @@ public class EditPlantActivity extends AppCompatActivity {
         Intent intent = new Intent(applicationContext, EditPlantActivity.class);
         intent.putExtra(EDIT_PLANT_ACTIVITY_SELECTED_PLANT_ID_EXTRA_KEY, selectedPlantID);
         return intent;
+    }
+
+    private boolean plantInfoComplete(String plantName, String plantType, LightLevel lightLevel){
+        if(plantName.isEmpty()){
+            toastMaker("Missing Plant Name!");
+            return false;
+        }
+        if(plantType.isEmpty()){
+            toastMaker("Missing Plant Type!");
+        }
+
+        return true;
+    }
+
+    private void toastMaker(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     // Menu functions
