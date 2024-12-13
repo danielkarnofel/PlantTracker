@@ -104,7 +104,30 @@
 
     </RadioGroup>
 
-    <!--TODO: This will need to be a dropdown to select from the user's areas
+    <TextView
+        android:id="@+id/editPlantActivityWateringFrequencyLabel"
+        style="@style/small_text_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/large_gap"
+        android:text="@string/label_WateringFrequency"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editPlantActivityLightLevelNeededRadioGroup" />
+
+    <EditText
+        android:id="@+id/editPlantActivityWateringFrequencyEditText"
+        style="@style/text_field_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap"
+        android:hint="@string/hint_EnterWateringFrequency"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editPlantActivityWateringFrequencyLabel"
+        tools:ignore="Autofill" />
+
     <TextView
         android:id="@+id/editPlantActivityAreaLabel"
         style="@style/small_text_style"
@@ -114,32 +137,28 @@
         android:text="@string/label_Area"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editPlantActivityLightLevelNeededRadioGroup" />
+        app:layout_constraintTop_toBottomOf="@id/editPlantActivityWateringFrequencyEditText" />
 
-    <EditText
-        android:id="@+id/editPlantActivityAreaEditText"
+    <Spinner
+        android:id="@+id/editPlantActivityAreaSpinner"
         style="@style/text_field_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/small_gap"
-        android:hint="@string/hint_SelectArea"
-        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editPlantActivityAreaLabel"
-        tools:ignore="Autofill" />
-     -->
+        app:layout_constraintTop_toBottomOf="@id/editPlantActivityAreaLabel" />
 
     <Button
         android:id="@+id/editPlantActivitySaveButton"
         style="@style/button_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/small_space"
+        android:layout_marginTop="@dimen/large_gap"
         android:text="@string/buttonTitle_Save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editPlantActivityLightLevelNeededRadioGroup" />
+        app:layout_constraintTop_toBottomOf="@id/editPlantActivityAreaSpinner" />
 
     <Button
         android:id="@+id/editPlantActivityCancelButton"

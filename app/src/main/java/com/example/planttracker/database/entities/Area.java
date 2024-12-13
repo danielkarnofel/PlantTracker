@@ -39,13 +39,7 @@ public class Area {
 
     @Override
     public String toString() {
-        return "Area{" +
-                "areaID=" + areaID +
-                ", userID=" + userID +
-                ", name='" + name + '\'' +
-                ", plantCount=" + plantCount +
-                ", lightLevel=" + lightLevel +
-                '}';
+        return name + ": " + plantCount + (plantCount == 1 ? " plant" : " plants");
     }
 
     public int getAreaID() {

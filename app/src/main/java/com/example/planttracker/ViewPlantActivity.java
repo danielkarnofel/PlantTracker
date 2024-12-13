@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
 
 import com.example.planttracker.database.AppRepository;
+import com.example.planttracker.database.entities.Area;
 import com.example.planttracker.database.entities.Plant;
 import com.example.planttracker.database.entities.User;
 import com.example.planttracker.databinding.ActivityViewPlantBinding;
@@ -80,8 +81,11 @@ public class ViewPlantActivity extends BaseActivity {
         String lastWateredFormatted = selectedPlant.getLastWatered().format(DateTimeFormatter.ofPattern("MM-dd HH:mm"));
         binding.viewPlantActivityLastWateredTextView.setText(lastWateredFormatted);
 
-        // This is an issue, need to get area from repo to get the name
-        // binding.viewPlantActivityAreaTextView.setText(selectedPlant.getAreaID());
-
+        LiveData<Area> areaObserver = repository.getAreaByAreaID(selectedPlant.getAreaID());
+        areaObserver.observe(this, area -> {
+            if (area != null) {
+                binding.viewPlantActivityAreaTextView.setText(area.getName());
+            }
+        });
     }
 }

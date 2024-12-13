@@ -53,5 +53,6 @@
     <string name="sharedPreferencesUserIDKey">plantTrackerSharedPreferenceUserID</string>
     <string name="no_area_selected">"No area selected. "</string>
     <string name="label_Type">Type:</string>
+    <string name="hint_EnterWateringFrequency">Enter watering frequency (in days)</string>
 
 </resources>
