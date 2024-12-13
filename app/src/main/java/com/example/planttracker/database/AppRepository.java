@@ -58,6 +58,12 @@ public class AppRepository {
         });
     }
 
+    public void updateArea(Area area) {
+        AppDatabase.databaseWriteExecutor.execute(() -> {
+            areaDAO.update(area);
+        });
+    }
+
     public void deleteArea(Area area) {
         AppDatabase.databaseWriteExecutor.execute(() -> {
             areaDAO.delete(area);
@@ -68,8 +74,8 @@ public class AppRepository {
         return areaDAO.getAllAreasByUserID(userID);
     }
 
-    public LiveData<Area> getAreaByID(int selectedAreaID) {
-        return areaDAO.getAreaByID(selectedAreaID);
+    public LiveData<Area> getAreaByAreaID(int selectedAreaID) {
+        return areaDAO.getAreaByAreaID(selectedAreaID);
     }
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
@@ -78,6 +84,12 @@ public class AppRepository {
     public void insertPlant(Plant... plant) {
         AppDatabase.databaseWriteExecutor.execute(() -> {
             plantDAO.insert(plant);
+        });
+    }
+
+    public void updatePlant(Plant plant) {
+        AppDatabase.databaseWriteExecutor.execute(() -> {
+            plantDAO.update(plant);
         });
     }
 
@@ -91,7 +103,7 @@ public class AppRepository {
         return plantDAO.getAllPlantsByUserID(userID);
     }
 
-    public LiveData<Plant> getPlantByID(int selectedPlantID) {
+    public LiveData<Plant> getPlantByPlantID(int selectedPlantID) {
         return plantDAO.getPlantByID(selectedPlantID);
     }
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -138,5 +150,6 @@ public class AppRepository {
     public LiveData<List<User>> getAllUsers() {
         return userDAO.getAllUsers();
     }
+
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 }

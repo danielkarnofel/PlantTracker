@@ -19,6 +19,7 @@ import com.example.planttracker.databinding.ActivityViewPlantBinding;
 import com.example.planttracker.utilities.IntentFactory;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class ViewPlantActivity extends BaseActivity {
     private ActivityViewPlantBinding binding;
@@ -32,23 +33,30 @@ public class ViewPlantActivity extends BaseActivity {
         binding = ActivityViewPlantBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        LiveData<Plant> plantObserver = repository.getPlantByID(selectedPlantID);
+        selectedPlantID = getIntent().getIntExtra(IntentFactory.VIEW_PLANT_ACTIVITY_SELECTED_PLANT_ID_EXTRA_KEY, PlantsActivity.NEW_PLANT_ID);
+
+        LiveData<Plant> plantObserver = repository.getPlantByPlantID(selectedPlantID);
         plantObserver.observe(this, plant -> {
             this.selectedPlant = plant;
             if (plant != null) {
-                invalidateOptionsMenu();
+                updateDisplay();
             }
         });
 
-        // TODO: implement onClick for Water Plant button
         binding.viewPlantActivityWaterPlantButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectedPlant.setLastWatered(LocalDateTime.now());
+                LiveData<Plant> plantObserver = repository.getPlantByPlantID(selectedPlantID);
+                plantObserver.observe(ViewPlantActivity.this, plant -> {
+                    selectedPlant = plant;
+                    if (plant != null) {
+                        selectedPlant.setLastWatered(LocalDateTime.now());
+                        repository.updatePlant(selectedPlant);
+                    }
+                });
             }
         });
 
-        // implement onClick for Edit button
         binding.viewPlantActivityEditButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,7 +64,6 @@ public class ViewPlantActivity extends BaseActivity {
             }
         });
 
-        // implement onClick for Back button
         binding.viewPlantActivityBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,6 +72,16 @@ public class ViewPlantActivity extends BaseActivity {
         });
     }
 
-    // implement basic intent factory
+    private void updateDisplay() {
+        binding.viewPlantActivityNameTextView.setText(selectedPlant.getName());
+        binding.viewPlantActivityTypeTextView.setText(selectedPlant.getType());
+        binding.viewPlantActivityLightLevelNeededTextView.setText(selectedPlant.getLightLevelNeeded().toString());
+        binding.viewPlantActivityWateringFrequencyTextView.setText(String.valueOf(selectedPlant.getWateringFrequency()));
+        String lastWateredFormatted = selectedPlant.getLastWatered().format(DateTimeFormatter.ofPattern("MM-dd HH:mm"));
+        binding.viewPlantActivityLastWateredTextView.setText(lastWateredFormatted);
 
+        // This is an issue, need to get area from repo to get the name
+        // binding.viewPlantActivityAreaTextView.setText(selectedPlant.getAreaID());
+
+    }
 }

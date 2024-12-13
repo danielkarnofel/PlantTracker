@@ -52,5 +52,6 @@
     <string name="sharedPreferencesFileName">plantTrackerSharedPreferences</string>
     <string name="sharedPreferencesUserIDKey">plantTrackerSharedPreferenceUserID</string>
     <string name="no_area_selected">"No area selected. "</string>
+    <string name="label_Type">Type:</string>
 
 </resources>

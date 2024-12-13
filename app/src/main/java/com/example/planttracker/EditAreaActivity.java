@@ -4,15 +4,21 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
+import androidx.lifecycle.LiveData;
+
+import com.example.planttracker.database.entities.Area;
+import com.example.planttracker.database.entities.User;
 import com.example.planttracker.databinding.ActivityEditAreaBinding;
 import com.example.planttracker.utilities.IntentFactory;
 import com.example.planttracker.utilities.LightLevel;
 
 public class EditAreaActivity extends BaseActivity {
     private ActivityEditAreaBinding binding;
-
     private int selectedAreaID;
+    private Area selectedArea;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,42 +26,61 @@ public class EditAreaActivity extends BaseActivity {
         binding = ActivityEditAreaBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // TODO: get selectedAreaID extra from intent
-        selectedAreaID = 1;
+        selectedAreaID = getIntent().getIntExtra(IntentFactory.EDIT_AREA_ACTIVITY_SELECTED_AREA_ID_EXTRA_KEY, AreasActivity.NEW_AREA_ID);
 
-        // TODO: save the user inputs to the selected Area
+        if (selectedAreaID != AreasActivity.NEW_AREA_ID) {
+            autofillValues();
+        }
+
         binding.editAreaActivitySaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                // TODO: Use this to get the light level from the selected radio button, returns null if nothing selected yet
+                String name = binding.editAreaActivityNameEditText.getText().toString();
                 LightLevel selectedLightLevel = LightLevel.getSelectionFromRadioGroup(binding.getRoot(), binding.editAreaActivityLightLevelRadioGroup);
 
-                // Clicking the save button will start the ViewAreaActivity.
+                if (selectedAreaID == AreasActivity.NEW_AREA_ID) {
+                    repository.insertArea(new Area(loggedInUserID, name, 0, selectedLightLevel));
+                } else {
+                    LiveData<Area> areaObserver = repository.getAreaByAreaID(selectedAreaID);
+                    areaObserver.observe(EditAreaActivity.this, area -> {
+                        selectedArea = area;
+                        if (selectedArea != null) {
+                            selectedArea.setName(name);
+                            selectedArea.setLightLevel(selectedLightLevel);
+                            repository.updateArea(selectedArea);
+                        }
+                    });
+                }
                 startActivity(IntentFactory.viewAreaActivityIntentFactory(getApplicationContext(), selectedAreaID));
             }
         });
 
-        // TODO: If creating a new area, should return to AreasActivity, if editing an existing area,
-        //  should return to ViewAreaActivity and pass the selectedAreaID as an extra
         binding.editAreaActivityCancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Clicking the cancel button will start the ViewAreaActivity.
                 startActivity(IntentFactory.viewAreaActivityIntentFactory(getApplicationContext(), selectedAreaID));
             }
         });
 
-        // TODO: delete the selected area
         binding.editAreaActivityDeleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Clicking the delete button will send user back to AreasActivity.
+                if (selectedAreaID != AreasActivity.NEW_AREA_ID) {
+                    LiveData<Area> areaObserver = repository.getAreaByAreaID(selectedAreaID);
+                    areaObserver.observe(EditAreaActivity.this, area -> {
+                        selectedArea = area;
+                        if (selectedArea != null) {
+                            repository.deleteArea(selectedArea);
+                        }
+                    });
+                }
                 startActivity(IntentFactory.areasActivityIntentFactory(getApplicationContext()));
             }
         });
 
     }
 
+    private void autofillValues() {
 
+    }
 }

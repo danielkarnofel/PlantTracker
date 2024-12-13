@@ -6,6 +6,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.planttracker.database.entities.Area;
 
@@ -16,6 +17,9 @@ public interface AreaDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Area... area);
+
+    @Update
+    void update(Area area);
 
     @Delete
     void delete(Area area);
@@ -28,5 +32,5 @@ public interface AreaDAO {
     LiveData<List<Area>> getAllAreasByUserID(int userID);
 
     @Query("SELECT * FROM " + AppDatabase.AREA_TABLE + " WHERE areaID = :selectedAreaID")
-    LiveData<Area> getAreaByID(int selectedAreaID);
+    LiveData<Area> getAreaByAreaID(int selectedAreaID);
 }
