@@ -30,6 +30,30 @@
         app:layout_constraintTop_toBottomOf="@id/viewPlantActivityNameLabel" />
 
     <TextView
+        android:id="@+id/viewPlantActivityTypeLabel"
+        style="@style/small_text_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/large_gap"
+        android:text="@string/label_Type"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPlantActivityNameTextView" />
+
+    <TextView
+        android:id="@+id/viewPlantActivityTypeTextView"
+        style="@style/large_text_style"
+        android:layout_width="@dimen/standard_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap"
+        android:text="@string/no_data"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewPlantActivityTypeLabel" />
+
+
+    <!-- This is currently disabled because we don't have a mechanism to set the area in EditPlant
+    <TextView
         android:id="@+id/viewPlantActivityAreaLabel"
         style="@style/small_text_style"
         android:layout_width="@dimen/standard_width"
@@ -38,7 +62,7 @@
         android:text="@string/label_Area"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPlantActivityNameTextView" />
+        app:layout_constraintTop_toBottomOf="@id/viewPlantActivityTypeTextView" />
 
     <TextView
         android:id="@+id/viewPlantActivityAreaTextView"
@@ -50,6 +74,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/viewPlantActivityAreaLabel" />
+     -->
 
     <TextView
         android:id="@+id/viewPlantActivityLightLevelNeededLabel"
@@ -60,7 +85,7 @@
         android:text="@string/label_LightLevelNeeded"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPlantActivityAreaTextView" />
+        app:layout_constraintTop_toBottomOf="@id/viewPlantActivityTypeTextView" />
 
     <TextView
         android:id="@+id/viewPlantActivityLightLevelNeededTextView"

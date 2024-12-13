@@ -1,36 +1,18 @@
 package com.example.planttracker;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
 
-import com.example.planttracker.database.AppRepository;
-import com.example.planttracker.database.AreaDAO;
 import com.example.planttracker.database.entities.Area;
-import com.example.planttracker.database.entities.User;
-import com.example.planttracker.database.typeConverters.LightLevelTypeConverter;
 import com.example.planttracker.databinding.ActivityViewAreaBinding;
 import com.example.planttracker.utilities.IntentFactory;
-import com.example.planttracker.utilities.LightLevel;
 
 public class ViewAreaActivity extends BaseActivity {
     private ActivityViewAreaBinding binding;
-
-    //TODO: get selectedAreaID from intent extra
-    // default value for selected slectedAreaID
-    private final int NO_AREA_SELECTED = -1;
-    // Set selectedAreaID to default value. Im 80% sure this is overridden with the intent factory.
-    // Will need reworking if not the case.
-    private int selectedAreaID = NO_AREA_SELECTED;
+    private int selectedAreaID = AreasActivity.NEW_AREA_ID;
+    private Area selectedArea;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,59 +20,35 @@ public class ViewAreaActivity extends BaseActivity {
         binding = ActivityViewAreaBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Update the display depending on the Area ID
-        selectedAreaID = getIntent().getIntExtra(IntentFactory.VIEW_AREA_ACTIVITY_SELECTED_AREA_ID_EXTRA_KEY,NO_AREA_SELECTED);
-        updateDisplay();
-        binding.viewAreaActivityEditButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Clicking the edit button will start the EditAreaActivity.
-                startActivity(IntentFactory.editAreaActivityIntentFactory(getApplicationContext(), selectedAreaID));
+        selectedAreaID = getIntent().getIntExtra(IntentFactory.VIEW_AREA_ACTIVITY_SELECTED_AREA_ID_EXTRA_KEY, AreasActivity.NEW_AREA_ID);
 
+        LiveData<Area> areaObserver = repository.getAreaByAreaID(selectedAreaID);
+        areaObserver.observe(this, area -> {
+            selectedArea = area;
+            if (selectedArea != null) {
+                updateDisplay();
             }
         });
 
-        // implement onClick for Back button
+        binding.viewAreaActivityEditButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(IntentFactory.editAreaActivityIntentFactory(getApplicationContext(), selectedAreaID));
+            }
+        });
+
         binding.viewAreaActivityBackButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Clicking the back button will send user back to AreasActivity.
                 startActivity(IntentFactory.areasActivityIntentFactory(getApplicationContext()));
             }
         });
     }
-    public void updateDisplay(){
-        if (selectedAreaID == NO_AREA_SELECTED){
-            /// Default values when no area is selected.
-            binding.viewAreaActivityNameTextView.setText(R.string.no_area_selected);
-            binding.viewAreaActivityLightLevelTextView.setText(R.string.no_area_selected);
-            binding.viewAreaActivityNumberOfPlantsTextView.setText(R.string.no_area_selected);
 
-        }
-        else {
-            /// An area is selected.
-            TextView areaNameTextView = findViewById(R.id.viewAreaActivityNameTextView);
-            TextView lightLevelTextView = findViewById(R.id.viewAreaActivityLightLevelTextView);
-            TextView numberPLantsTextView = findViewById(R.id.viewAreaActivityNumberOfPlantsTextView);
-            /// Getting the values of the selected area. No sure if doing it right.
-            LiveData<Area> selectedArea = repository.getAreaByID(selectedAreaID);
-            Area currentArea = selectedArea.getValue();
-            //assert currentArea != null;
-            if (currentArea == null){
-                return;
-            }
-            String areaName = currentArea.getName();
-            LightLevel areaLight = currentArea.getLightLevel();
-            LightLevelTypeConverter lightToIntConverter = new LightLevelTypeConverter();
-            int areaLightInt = lightToIntConverter.convertLightLevelToInt(areaLight);
-            int numberOfPlants = currentArea.getPlantCount();
-            /// Setting the text views to respective values.
-            areaNameTextView.setText(areaName);
-            lightLevelTextView.setText(String.valueOf(areaLightInt));
-            numberPLantsTextView.setText(String.valueOf(numberOfPlants));
-
-        }
-
+    public void updateDisplay() {
+        binding.viewAreaActivityNameTextView.setText(selectedArea.getName());
+        binding.viewAreaActivityLightLevelTextView.setText(selectedArea.getLightLevel().toString());
+        binding.viewAreaActivityNumberOfPlantsTextView.setText(String.valueOf(selectedArea.getPlantCount()));
     }
 
 }
