@@ -134,5 +134,9 @@ public class AppRepository {
 
         return usernameCount > 0;
     }
+
+    public LiveData<List<User>> getAllUsers() {
+        return userDAO.getAllUsers();
+    }
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 }
