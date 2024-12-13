@@ -1,6 +1,6 @@
 # PlantTracker
 
-PlantTracker is an Android application designed to help users track and manage their plants effectively. With features like categorizing plants by location, keeping detailed plant care records, and organizing user profiles, this app is perfect for both beginner and experienced plant enthusiasts.
+PlantTracker is an Android application designed to help users track and manage their plants effectively. With features like categorizing plants by location, keeping detailed plant care records, and organizing user profiles, this app is perfect for both beginner and experienced plant enthusiasts. This project was created for CST 338: Software Design at CSUMB. 
 
 ## Features
 
@@ -15,7 +15,7 @@ To run this project on your local machine, follow these steps:
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/PlantTracker.git
+   git clone https://github.com/danielkarnofel/PlantTracker.git
    ```
 
 2. Open the project in Android Studio.
