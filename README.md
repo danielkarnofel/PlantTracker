@@ -33,11 +33,13 @@ To run this project on your local machine, follow these steps:
 
 ## Project Structure
 
-![LayoutFinal drawio](https://github.com/user-attachments/assets/45c4ce41-56f9-421a-96ee-916a5dc460c4)
+![LayoutFinal drawio](https://github.com/user-attachments/assets/aa1b7a73-e0fa-4e66-bd11-6eeb3b815d5a)
+
 
 ## Database Structure
 
-![PlantTrackerERD](https://github.com/user-attachments/assets/bd1bc5bc-0f80-41c8-ac1e-3c883e14fd09)
+![PlantERD drawio](https://github.com/user-attachments/assets/5ad0b28a-42ca-467b-bc5c-21f09705b5ee)
+
 
 ## Getting Started
 
