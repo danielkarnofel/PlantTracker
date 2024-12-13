@@ -14,6 +14,7 @@ import com.example.planttracker.database.entities.Plant;
 import com.example.planttracker.databinding.ActivityEditPlantBinding;
 import com.example.planttracker.utilities.IntentFactory;
 import com.example.planttracker.utilities.LightLevel;
+import com.example.planttracker.utilities.ToastMaker;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -70,25 +71,31 @@ public class EditPlantActivity extends BaseActivity {
                 String name = binding.editPlantActivityNameEditText.getText().toString();
                 String type = binding.editPlantActivityPlantTypeEditText.getText().toString();
                 LightLevel selectedLightLevel = LightLevel.getSelectionFromRadioGroup(binding.getRoot(), binding.editPlantActivityLightLevelNeededRadioGroup);
-                int wateringFrequency = Integer.parseInt(binding.editPlantActivityWateringFrequencyEditText.getText().toString());
+                int wateringFrequency = -1;
+                wateringFrequency = Integer.parseInt(binding.editPlantActivityWateringFrequencyEditText.getText().toString());
 
-                if (selectedPlantID == PlantsActivity.NEW_PLANT_ID) {
-                    repository.insertPlant(new Plant(loggedInUserID, areaID, name, type, selectedLightLevel, wateringFrequency, LocalDateTime.now()));
-                } else {
-                    LiveData<Plant> plantObserver = repository.getPlantByPlantID(selectedPlantID);
-                    plantObserver.observe(EditPlantActivity.this, area -> {
-                        selectedPlant = area;
-                        if (selectedPlant != null) {
-                            selectedPlant.setAreaID(areaID);
-                            selectedPlant.setName(name);
-                            selectedPlant.setType(type);
-                            selectedPlant.setLightLevelNeeded(selectedLightLevel);
-                            selectedPlant.setWateringFrequency(wateringFrequency);
-                            repository.updatePlant(selectedPlant);
-                        }
-                    });
+                if(plantInfoComplete(name,type,wateringFrequency)){
+                    if (selectedPlantID == PlantsActivity.NEW_PLANT_ID) {
+                        repository.insertPlant(new Plant(loggedInUserID, areaID, name, type, selectedLightLevel, wateringFrequency, LocalDateTime.now()));
+                    } else {
+                        LiveData<Plant> plantObserver = repository.getPlantByPlantID(selectedPlantID);
+                        int finalWateringFrequency = wateringFrequency;
+                        plantObserver.observe(EditPlantActivity.this, area -> {
+                            selectedPlant = area;
+                            if (selectedPlant != null) {
+                                selectedPlant.setAreaID(areaID);
+                                selectedPlant.setName(name);
+                                selectedPlant.setType(type);
+                                selectedPlant.setLightLevelNeeded(selectedLightLevel);
+                                selectedPlant.setWateringFrequency(finalWateringFrequency);
+                                repository.updatePlant(selectedPlant);
+                            }
+                        });
+                        startActivity(IntentFactory.viewPlantActivityIntentFactory(getApplicationContext(), selectedPlantID));
+                    }
+
                 }
-                startActivity(IntentFactory.viewPlantActivityIntentFactory(getApplicationContext(), selectedPlantID));
+
             }
         });
 
@@ -116,6 +123,23 @@ public class EditPlantActivity extends BaseActivity {
         });;
     }
 
+    private boolean plantInfoComplete(String name, String type, int waterFreq){
+        if(name.isEmpty()){
+            ToastMaker.makeToast(this, "Plant Name missing!");
+            return false;
+        }
+        if(type.isEmpty()){
+            ToastMaker.makeToast(this,"Plant Type missing!");
+            return false;
+        }
+        if(waterFreq == -1){
+            ToastMaker.makeToast(this,"Watering Frequency missing!");
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
     private void autoFillValues() {
 
     }
