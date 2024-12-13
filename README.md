@@ -33,22 +33,8 @@ To run this project on your local machine, follow these steps:
 
 ## Project Structure
 
-```plaintext
-src/
-├── main/
-│   ├── java/
-│   │   ├── com.example.planttracker/
-│   │   │   ├── models/       # Data entities like User, Plant, and Area
-│   │   │   ├── database/     # Room database and DAO classes
-│   │   │   ├── viewmodel/    # ViewModels for data handling
-│   │   │   ├── ui/           # Activities and Fragments
-│   │   │   └── utils/        # Utility classes and helpers
-│   ├── res/
-│   │   ├── layout/           # XML layouts
-│   │   ├── values/           # Strings, themes, and other resources
-│   │   └── drawable/         # App icons and images
-├── AndroidManifest.xml       # Application configuration
-```
+![LayoutFinal drawio](https://github.com/user-attachments/assets/45c4ce41-56f9-421a-96ee-916a5dc460c4)
+
 
 ## Getting Started
 
