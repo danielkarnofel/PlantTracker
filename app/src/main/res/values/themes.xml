@@ -17,6 +17,7 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <!-- Currently this is not being used -->
     <style name="light_level_radio_style_alt">
         <item name="android:button">@null
         </item> <!-- To remove the default radio button indicator -->
@@ -30,7 +31,7 @@
 
 
     <style name="recycler_item_style">
-        <item name="android:layout_width">@dimen/recycler_item_width</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:layout_margin">@dimen/large_gap</item>
@@ -54,6 +55,7 @@
         <item name="android:layout_marginTop">@dimen/large_gap</item>
         <item name="android:orientation">horizontal</item>
         <item name="android:paddingHorizontal">@dimen/large_padding</item>
+        <item name="android:clipToPadding">false</item>
     </style>
 
     <style name="user_recycler_view_style">
