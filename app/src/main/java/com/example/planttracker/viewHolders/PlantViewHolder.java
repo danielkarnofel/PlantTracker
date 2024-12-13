@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.planttracker.R;
 import com.example.planttracker.database.entities.Plant;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.Locale;
 
 public class PlantViewHolder extends RecyclerView.ViewHolder {
@@ -27,7 +29,9 @@ public class PlantViewHolder extends RecyclerView.ViewHolder {
     public void bind(Plant plant) {
         nameTextView.setText(plant.getName());
         typeTextView.setText(plant.getType());
-        lastWateredTextView.setText(String.format(Locale.getDefault(), "Last watered %s days ago", plant.getLastWatered()));
+        long daysSinceLastWatered = Duration.between(plant.getLastWatered(), LocalDateTime.now()).toDays();
+        String dayString = daysSinceLastWatered == 1 ? "day" : "days";
+        lastWateredTextView.setText(String.format(Locale.getDefault(), "Last watered %s %s ago", daysSinceLastWatered, dayString));
     }
 
     static PlantViewHolder create(ViewGroup parent) {
