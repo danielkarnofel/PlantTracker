@@ -18,6 +18,9 @@ public interface PlantDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(Plant... plant);
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    long insert(Plant plant);
+
     @Update
     void update(Plant plant);
 
@@ -32,5 +35,8 @@ public interface PlantDAO {
 
     @Query("SELECT * FROM " + AppDatabase.PLANT_TABLE + " WHERE plantID = :selectedPlantID")
     LiveData<Plant> getPlantByID(int selectedPlantID);
+
+    @Query("SELECT * FROM " + AppDatabase.PLANT_TABLE + " WHERE name = :name")
+    LiveData<Plant> getPlantByName(String name);
 
 }
