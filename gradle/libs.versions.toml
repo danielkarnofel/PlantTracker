@@ -1,5 +1,7 @@
 [versions]
 agp = "8.7.3"
+coreTesting = "2.2.0"
+coreTestingVersion = "2.1.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
@@ -11,6 +13,8 @@ mockitoCore = "4.10.0"
 roomRuntime = "2.6.1"
 
 [libraries]
+core-testing = { module = "androidx.arch.core:core-testing", version.ref = "coreTesting" }
+core-testing-v210 = { module = "androidx.arch.core:core-testing", version.ref = "coreTestingVersion" }
 espresso-intents = { module = "androidx.test.espresso:espresso-intents", version.ref = "espressoCore" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
