@@ -77,6 +77,7 @@ public class EditPlantActivity extends BaseActivity {
                 if(plantInfoComplete(name,type,wateringFrequency)){
                     if (selectedPlantID == PlantsActivity.NEW_PLANT_ID) {
                         repository.insertPlant(new Plant(loggedInUserID, areaID, name, type, selectedLightLevel, wateringFrequency, LocalDateTime.now()));
+                        startActivity(IntentFactory.plantsActivityIntentFactory(getApplicationContext()));
                     } else {
                         LiveData<Plant> plantObserver = repository.getPlantByPlantID(selectedPlantID);
                         int finalWateringFrequency = wateringFrequency;
@@ -90,8 +91,9 @@ public class EditPlantActivity extends BaseActivity {
                                 selectedPlant.setWateringFrequency(finalWateringFrequency);
                                 repository.updatePlant(selectedPlant);
                             }
+                            startActivity(IntentFactory.viewPlantActivityIntentFactory(getApplicationContext(), selectedPlantID));
                         });
-                        startActivity(IntentFactory.viewPlantActivityIntentFactory(getApplicationContext(), selectedPlantID));
+
                     }
 
                 }
