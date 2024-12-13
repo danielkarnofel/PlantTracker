@@ -51,8 +51,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/viewPlantActivityTypeLabel" />
 
-
-    <!-- This is currently disabled because we don't have a mechanism to set the area in EditPlant
     <TextView
         android:id="@+id/viewPlantActivityAreaLabel"
         style="@style/small_text_style"
@@ -74,7 +72,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/viewPlantActivityAreaLabel" />
-     -->
 
     <TextView
         android:id="@+id/viewPlantActivityLightLevelNeededLabel"
@@ -85,7 +82,7 @@
         android:text="@string/label_LightLevelNeeded"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewPlantActivityTypeTextView" />
+        app:layout_constraintTop_toBottomOf="@id/viewPlantActivityAreaTextView" />
 
     <TextView
         android:id="@+id/viewPlantActivityLightLevelNeededTextView"
@@ -147,7 +144,7 @@
         style="@style/water_button_style"
         android:layout_width="@dimen/standard_width"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/small_space"
+        android:layout_marginTop="@dimen/large_gap"
         android:text="@string/buttonTitle_WaterPlant"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
