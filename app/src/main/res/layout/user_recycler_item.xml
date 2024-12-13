@@ -1,6 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/user_recycler_item_style"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/userRecyclerItemUsernameTextView"
+        style="@style/large_text_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/small_padding"
+        android:text="@string/no_data"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/userRecyclerItemIsAdminLabel"
+        style="@style/small_text_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/small_padding"
+        android:text="Admin status:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/userRecyclerItemUsernameTextView" />
+
+    <TextView
+        android:id="@+id/userRecyclerItemIsAdminTextView"
+        style="@style/small_text_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/small_padding"
+        android:text="@string/no_data"
+        app:layout_constraintStart_toEndOf="@id/userRecyclerItemIsAdminLabel"
+        app:layout_constraintTop_toBottomOf="@id/userRecyclerItemUsernameTextView" />
+
+    <Button
+        android:id="@+id/userRecyclerItemSetAdminButton"
+        style="@style/user_recycler_button_style"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap"
+        android:text="Set Admin"
+        app:layout_constraintEnd_toStartOf="@id/userRecyclerItemDeleteButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/userRecyclerItemIsAdminLabel" />
+
+    <Button
+        android:id="@+id/userRecyclerItemDeleteButton"
+        style="@style/user_recycler_danger_button_style"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_gap"
+        android:text="Delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/userRecyclerItemSetAdminButton"
+        app:layout_constraintTop_toBottomOf="@id/userRecyclerItemIsAdminLabel" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
