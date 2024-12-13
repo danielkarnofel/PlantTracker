@@ -14,6 +14,7 @@ import com.example.planttracker.database.entities.User;
 import com.example.planttracker.databinding.ActivityEditAreaBinding;
 import com.example.planttracker.utilities.IntentFactory;
 import com.example.planttracker.utilities.LightLevel;
+import com.example.planttracker.utilities.ToastMaker;
 
 public class EditAreaActivity extends BaseActivity {
     private ActivityEditAreaBinding binding;
@@ -37,31 +38,31 @@ public class EditAreaActivity extends BaseActivity {
             public void onClick(View view) {
                 String name = binding.editAreaActivityNameEditText.getText().toString();
                 LightLevel selectedLightLevel = LightLevel.getSelectionFromRadioGroup(binding.getRoot(), binding.editAreaActivityLightLevelRadioGroup);
+                if(areaInfoComplete(name)){
+                    if (selectedAreaID == AreasActivity.NEW_AREA_ID) {
+                        repository.insertArea(new Area(loggedInUserID, name, 0, selectedLightLevel));
+                        startActivity(IntentFactory.areasActivityIntentFactory(getApplicationContext()));
+                    } else {
+                        LiveData<Area> areaObserver = repository.getAreaByAreaID(selectedAreaID);
+                        areaObserver.observe(EditAreaActivity.this, area -> {
+                            selectedArea = area;
+                            if (selectedArea != null) {
+                                selectedArea.setName(name);
+                                selectedArea.setLightLevel(selectedLightLevel);
+                                repository.updateArea(selectedArea);
+                            }
 
-                if (selectedAreaID == AreasActivity.NEW_AREA_ID) {
-                    repository.insertArea(new Area(loggedInUserID, name, 0, selectedLightLevel));
-                    startActivity(IntentFactory.areasActivityIntentFactory(getApplicationContext()));
-                } else {
-                    LiveData<Area> areaObserver = repository.getAreaByAreaID(selectedAreaID);
-                    areaObserver.observe(EditAreaActivity.this, area -> {
-                        selectedArea = area;
-                        if (selectedArea != null) {
-                            selectedArea.setName(name);
-                            selectedArea.setLightLevel(selectedLightLevel);
-                            repository.updateArea(selectedArea);
-                        }
-
-                    });
-                    startActivity(IntentFactory.viewAreaActivityIntentFactory(getApplicationContext(), selectedAreaID));
+                        });
+                        startActivity(IntentFactory.viewAreaActivityIntentFactory(getApplicationContext(), selectedAreaID));
+                    }
                 }
-
             }
         });
 
         binding.editAreaActivityCancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(IntentFactory.viewAreaActivityIntentFactory(getApplicationContext(), selectedAreaID));
+                startActivity(IntentFactory.areasActivityIntentFactory(getApplicationContext()));
             }
         });
 
@@ -81,6 +82,16 @@ public class EditAreaActivity extends BaseActivity {
             }
         });
 
+    }
+
+    private boolean areaInfoComplete(String name){
+        if(name.isEmpty()){
+            ToastMaker.makeToast(this,"Area Name missing!");
+            return false;
+        }
+        else{
+            return true;
+        }
     }
 
     private void autofillValues() {
