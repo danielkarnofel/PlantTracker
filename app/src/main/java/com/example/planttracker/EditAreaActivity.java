@@ -40,6 +40,7 @@ public class EditAreaActivity extends BaseActivity {
 
                 if (selectedAreaID == AreasActivity.NEW_AREA_ID) {
                     repository.insertArea(new Area(loggedInUserID, name, 0, selectedLightLevel));
+                    startActivity(IntentFactory.areasActivityIntentFactory(getApplicationContext()));
                 } else {
                     LiveData<Area> areaObserver = repository.getAreaByAreaID(selectedAreaID);
                     areaObserver.observe(EditAreaActivity.this, area -> {
@@ -49,9 +50,11 @@ public class EditAreaActivity extends BaseActivity {
                             selectedArea.setLightLevel(selectedLightLevel);
                             repository.updateArea(selectedArea);
                         }
+
                     });
+                    startActivity(IntentFactory.viewAreaActivityIntentFactory(getApplicationContext(), selectedAreaID));
                 }
-                startActivity(IntentFactory.viewAreaActivityIntentFactory(getApplicationContext(), selectedAreaID));
+
             }
         });
 
