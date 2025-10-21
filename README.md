@@ -12,17 +12,29 @@
 
 ### Login and Sign Up
 
+(![Login Screenshot](screenshots/login.png))
+
+(![Signup Screenshot](screenshots/signup.png))
+
 ### Home Page
+
+(![Home Page Screenshot](screenshots/home.png))
 
 ### Plant Creation and Editing
 
+(![Plant View Screenshot](screenshots/all_plants.png))
+
+(![Plant Creation Screenshot](screenshots/new_plant.png))
+
+(![Plant Editing Screenshot](screenshots/view_plant.png))
+
 ### Admin Options
+
+(![Admin Options Screenshot](screenshots/admin.png))
 
 ### Database Structure
 
-(./screenshots/PlantTrackerERD.png)
-
-(![PlantERD drawio](https://github.com/user-attachments/assets/304266fe-0734-4200-8b91-ebeaad81b9ac))
+(![ERD Diagram](screenshots/PlantTrackerERD.png))
 
 ## Installation
 
