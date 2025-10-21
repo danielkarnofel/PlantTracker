@@ -40,7 +40,7 @@
 ### Database Structure
 
 <p float="left">
-  <img src="screenshots/PlantTrackerERD.png" width="30%" />
+  <img src="screenshots/PlantTrackerERD.png" width="90%" />
 </p>
 
 ## Installation
