@@ -16,9 +16,11 @@
    "
    display: flex;
    gap: 10rem;
-   ">
-<img src="screenshots/login.png">
-<img src="screenshots/signup.png">
+   max-height: 50vh;
+   "
+>
+   <img src="screenshots/login.png">
+   <img src="screenshots/signup.png">
 </div>
 
 ### Home Page
