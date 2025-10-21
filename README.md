@@ -1,17 +1,32 @@
 # PlantTracker
 
-PlantTracker is an Android application designed to help users track and manage their plants effectively. With features like categorizing plants by location, keeping detailed plant care records, and organizing user profiles, this app is perfect for both beginner and experienced plant enthusiasts. This project was created for CST 338: Software Design at CSUMB. 
+**PlantTracker** is an Android application for tracking, organizing, and managing houseplants. It is implented with Java, Android Studio, and the Room persistence library. 
 
 ## Features
 
-- **User Profiles**: Create and manage user profiles to personalize your experience.
-- **Plant Database**: Add, update, and delete plants with relevant details like name, type, and watering schedule.
-- **Location Tracking**: Assign plants to specific areas (e.g., Living Room, Kitchen) for better organization.
-- **Care Reminders**: Record when each plant is watered, and easily view the plants that are due for watering.
+- **User Profiles**: Supports account creation and login. All user data is stored on the local device using an SQLite database abstracted by the Room library.
+- **Plant Registration**: Users can add plants to the PlantTracker app and input details like name, type, light level, and watering frequency.
+- **Area Organization**: Users can create custom areas and add plants from their collection,  making plant care and organization simple.
+- **Watering Reminders**: Users can set up custom watering schedules for each plant in their collection. Plants are sorted by watering schedule, and any overdue plants are highlighted.
+- **Admin Options**: Administrators can update and delete user accounts in-app through a convenient Admin Options page.
+
+### Login and Sign Up
+
+### Home Page
+
+### Plant Creation and Editing
+
+### Admin Options
+
+### Database Structure
+
+(./screenshots/PlantTrackerERD.png)
+
+(![PlantERD drawio](https://github.com/user-attachments/assets/304266fe-0734-4200-8b91-ebeaad81b9ac))
 
 ## Installation
 
-To run this project on your local machine, follow these steps:
+In order to run this project, follow the following steps:
 
 1. Clone this repository:
    ```bash
@@ -24,27 +39,5 @@ To run this project on your local machine, follow these steps:
 
 4. Run the app on an emulator or a connected Android device.
 
-## Technologies Used
-
-- **Java**: Primary programming language for Android development.
-- **Android Room**: A persistence library for database management.
-- **MVVM Architecture**: Clean and maintainable code structure.
-- **Material Design**: For a modern and intuitive user interface.
-
-## Project Structure
-
-![LayoutFinal drawio](https://github.com/user-attachments/assets/f3831c3b-b221-4ab1-ac5d-4d84e6e76e9e)
-
-
-## Database Structure
-
-![PlantERD drawio](https://github.com/user-attachments/assets/304266fe-0734-4200-8b91-ebeaad81b9ac)
-
-
-## Getting Started
-
-1. Ensure you have the latest version of Android Studio installed.
-2. Use the **Device Manager** in Android Studio to create an emulator or connect your Android device.
-3. Import the project and run the app.
-
+This project was created for CST 338: Software Design at CSUMB. \
 Feel free to reach out with any questions or suggestions. Happy planting!
