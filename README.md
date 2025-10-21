@@ -12,29 +12,29 @@
 
 ### Login and Sign Up
 
-(![Login Screenshot](screenshots/login.png))
+![Login Screenshot](screenshots/login.png)
 
-(![Signup Screenshot](screenshots/signup.png))
+![Signup Screenshot](screenshots/signup.png)
 
 ### Home Page
 
-(![Home Page Screenshot](screenshots/home.png))
+![Home Page Screenshot](screenshots/home.png)
 
 ### Plant Creation and Editing
 
-(![Plant View Screenshot](screenshots/all_plants.png))
+![Plant View Screenshot](screenshots/all_plants.png)
 
-(![Plant Creation Screenshot](screenshots/new_plant.png))
+![Plant Creation Screenshot](screenshots/new_plant.png)
 
-(![Plant Editing Screenshot](screenshots/view_plant.png))
+![Plant Editing Screenshot](screenshots/view_plant.png)
 
 ### Admin Options
 
-(![Admin Options Screenshot](screenshots/admin.png))
+![Admin Options Screenshot](screenshots/admin.png)
 
 ### Database Structure
 
-(![ERD Diagram](screenshots/PlantTrackerERD.png))
+![ERD Diagram](screenshots/PlantTrackerERD.png)
 
 ## Installation
 
