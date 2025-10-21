@@ -12,9 +12,14 @@
 
 ### Login and Sign Up
 
-![Login Screenshot](screenshots/login.png)
-
-![Signup Screenshot](screenshots/signup.png)
+<div style=
+   "
+   display: flex;
+   gap: 10rem;
+   ">
+<img src="screenshots/login.png">
+<img src="screenshots/signup.png">
+</div>
 
 ### Home Page
 
