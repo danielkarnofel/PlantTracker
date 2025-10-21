@@ -12,16 +12,10 @@
 
 ### Login and Sign Up
 
-<div style=
-   "
-   display: flex;
-   gap: 10rem;
-   max-height: 50vh;
-   "
->
-   <img src="screenshots/login.png">
-   <img src="screenshots/signup.png">
-</div>
+<p float="left">
+  <img src="screenshots/login.png" width="45%" />
+  <img src="screenshots/signup.png" width="45%" />
+</p>
 
 ### Home Page
 
